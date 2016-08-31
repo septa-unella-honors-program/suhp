@@ -1,4 +1,5 @@
 var db = require('../db/db_config.js');
+var gif = require('../config/giphy.js');
 
 module.exports={
 	get:function(req,res){
@@ -8,7 +9,7 @@ module.exports={
         password: req.query.password
         }})
         .then(function(user) {
-            console.log('user', user[0]);
+            
             if(user == '') {
                 res.status(404).send('User not found');
             } else {
@@ -26,6 +27,7 @@ module.exports={
      	 email:req.body.email,
      	 password: req.body.password}})
         .spread(function(user, created) {
+
           res.sendStatus(created ? 201 : 200);
           
         });

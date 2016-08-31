@@ -1,3 +1,8 @@
 /node_modules
+<<<<<<< HEAD
 /client/lib
-/oldKNEXdb
+/server/config/server_config.js
+
+=======
+/server/config/server_config.js
+>>>>>>> mailgun
