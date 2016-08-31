@@ -20,7 +20,6 @@ angular.module('suhp.dashboard', [])
   //attached to ng-submit
   $scope.addGoal = function(){
     Dashboard.storeUserGoals($scope.goal)
-      //need to figure out has expired and has completed checkbox
   }
-  
+
 })

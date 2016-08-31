@@ -9,13 +9,14 @@
     "Lauren Settle"
   ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/lolosett/suhp",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "client/lib"
   ],
   "dependencies": {
     "angular": "^1.5.8"
