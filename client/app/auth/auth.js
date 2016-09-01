@@ -1,12 +1,12 @@
 angular.module('suhp.auth', [])
 
-.controller('AuthController', function($scope, Auth){
+.controller('AuthController', function($scope, Auth, $location){
   $scope.user = {};
 
 //Sign up should check username availability
 
   $scope.signup = function(){
-    Auth.signup($scope.user);
+    Auth.signup($scope.user)
       .then(function(response){
         //? establish response type client will receive from database
         // will need to receive a boolean indicating whether or not username is in db
