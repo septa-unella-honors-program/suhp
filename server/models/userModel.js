@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 module.exports= {
 
 	get:function(req,res){
-
+        console.log('req', req);
         db.User.findOne({where: {
         username: req.query.username
         }})

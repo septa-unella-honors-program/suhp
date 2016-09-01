@@ -21,6 +21,7 @@ app.use(cors());
 app.use(bodyParser.json({extended:false}));
 app.use(express.static('client'));
 app.use(morgan('dev'));
+app.use('/', router);
 
 
 app.set('port', process.env.PORT || 8080);
