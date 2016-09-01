@@ -80,12 +80,12 @@ module.exports={
 
                     goalCronJobDB[goalId].goalJobShame=goalJobShame;
 
-                    // res.json(goalCronJobDB);
+                    res.json(goalCronJobDB);
 
                     
                     
 
-                    res.sendStatus(created ? 201 : 200);
+                    //res.sendStatus(created ? 201 : 200);
                 }); 
             });
         })
@@ -98,15 +98,24 @@ module.exports={
         db.Goal.findOrCreate({where:{id:req.query.goalId}})
         .spread(function(goal){
             // console.log(goal);
-            // res.json(goal);
-            goalCronJobDB[goal.get('id')].goalJobDeadline.cancel();
-            goalCronJobDB[goal.get('id')].goalJobShame.cancel();
+            console.log(goalCronJobDB);
+            console.log(goalCronJobDB[req.query.goalId]);
+            console.log(goalCronJobDB[req.query.goalId].goalJobDeadline);
+            console.log(goalCronJobDB[req.query.goalId].goalJobShame);
+            res.json(goalCronJobDB);
+            if(goalCronJobDB[req.query.goalId].goalJobDeadline){
+                goalCronJobDB[goal.get('id')].goalJobDeadline.cancel();
+            }
+
+            if(goalCronJobDB[req.query.goalId].goalJobShame){
+                goalCronJobDB[req.query.goalId].goalJobShame.cancel();
+            }
 
             goal.update({
                 hasCompleted:true
             })
             .then(function(){
-                res.send("Successful update");
+                //res.send("Successful update");
             });
         })
         .catch(function(err){

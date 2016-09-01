@@ -23,7 +23,7 @@ module.exports = {
 	          					<span style='font-weight:bold'>${req.body.username} </span>
 	          					wants you to support them in accomplishing their goal ${req.body.description}!</p>
 	          					<div style='text-align:center;'>
-	          					<img src=http://media4.giphy.com/media/Y8ocCgwtdj29O/200w_d.gif></img>
+	          					<img src=${gifList[randomIndex]}></img>
 	          					</div>
       						</div>
   						   </div>`
@@ -62,7 +62,7 @@ module.exports = {
         userEmailList.forEach(function(email){
         var data = {
             from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
-            to: 'lsfisher@usc.edu',
+            to: email,
             subject: `Shame...${req.body.username} wasn\'t able to accomplish their goal in time!`,
             text: `${req.body.username} wasn\'t able to ${req.body.description}! Shame! Shame! Shame!`
         };

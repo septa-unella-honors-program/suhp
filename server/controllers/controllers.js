@@ -50,7 +50,7 @@ module.exports={
 
 		},
 		post:function(req,res){
-
+			console.log("INSIDE EMAIL POST CONTROLLER");
 			emailModel.post(req, res);
 		}
 
