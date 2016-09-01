@@ -19,13 +19,12 @@ var app = express();
 //add middleware
 app.use(cors());
 app.use(bodyParser.json({extended:false}));
-app.use(express.static('../../client'));
+app.use(express.static('client'));
 app.use(morgan('dev'));
 
 
 app.set('port', process.env.PORT || 8080);
 
-app.use('/', router);
 
 
 app.listen(app.get('port'), function(){

@@ -4,10 +4,14 @@ angular.module('suhp', [
   'suhp.services',
   'ngRoute'])
 
-  .config($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/signin', {
-        templateUrl: 'app/auth/signin.html',
+        templateUrl: './auth/signin.html',
+        controller: 'AuthController'
+      })
+      .when('/', {
+        templateUrl: './auth/signin.html',
         controller: 'AuthController'
       })
       .when('/signup', {
@@ -21,4 +25,7 @@ angular.module('suhp', [
       .otherwise({
         redirectTo: '/signin'
       })
-  }
+  })
+  .run(function($location) {
+    $location.path('/signin');
+  });

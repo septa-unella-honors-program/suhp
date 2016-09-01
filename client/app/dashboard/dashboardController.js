@@ -11,7 +11,7 @@ angular.module('suhp.dashboard', [])
     })
     .catch(function(error){
       console.error(error)
-    }
+    })
   }
   initializeGoals();
 
