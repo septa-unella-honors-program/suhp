@@ -16,7 +16,7 @@ module.exports = {
         userEmailList.forEach(function(email) {
             //Set a random index to set on gifList so that a random welcome gif is attached to each email sent
             let randomIndex = Math.floor(Math.random() * gifList.length);
-
+            //Message text & gif for email
             let message = `<div style='display:flex;'>
       						<div style='flex-direction:row;'>
 	          					<p>Your friend 
@@ -27,7 +27,7 @@ module.exports = {
 	          					</div>
       						</div>
   						   </div>`
-            console.log(email);
+            
             var data = {
                 from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
                 to: email,
@@ -44,12 +44,33 @@ module.exports = {
     },
 
     sendReminderEmails: function(userEmailList, req) {
+
+        //3 'Reminder' gifs from giphy
+        let gifList = ['http://media4.giphy.com/media/kKHYvXhLx1EqI/200w_d.gif',
+            'https://media4.giphy.com/media/hMAEwSXJR5qSY/200_d.gif',
+            'http://media3.giphy.com/media/2jRqS4vxh2ety/200_d.gif'
+        ];
+
         userEmailList.forEach(function(email){
+
+        let randomIndex = Math.floor(Math.random() * gifList.length);
+
+         let message = `<div style='display:flex;'>
+                            <div style='flex-direction:row;'>
+                                <p><span style='font-weight:bold'>${req.body.username}'s </span>
+                                goal deadline is almost here! Remind them to keep
+                                working on ${req.body.description}!</p>
+                                <div style='text-align:center;'>
+                                <img src=${gifList[randomIndex]}></img>
+                                </div>
+                            </div>
+                           </div>`
+
         var data = {
             from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
             to: email,
             subject: `Remind ${req.body.username} to keep working on their goal!`,
-            text: `${req.body.username}\'s goal deadline is almost here! Remind them to keep working on ${req.body.description}`
+            html: message
         };
 
         mailgun.messages().send(data, function(error, body) {
@@ -59,12 +80,32 @@ module.exports = {
     },
 
     sendShameEmails: function(userEmailList, req) {
+
+        //3 'Shame' gifs from giphy
+        let gifList = ['http://media4.giphy.com/media/eP1fobjusSbu/200w_d.gif',
+            'https://media4.giphy.com/media/m6tmCnGCNvTby/200_d.gif',
+            'http://media3.giphy.com/media/m6ljvZNi8xnvG/200_d.gif'
+        ];
+
+        let message = `<div style='display:flex;'>
+                            <div style='flex-direction:row;'>
+                                <p>Shame...<span style='font-weight:bold'>${req.body.username}</span>
+                                wasn't able to ${req.body.description}! Shame! Shame! Shame!</p>
+                                <div style='text-align:center;'>
+                                <img src=${gifList[randomIndex]}></img>
+                                </div>
+                            </div>
+                           </div>`
+        
         userEmailList.forEach(function(email){
+
+        let randomIndex = Math.floor(Math.random() * gifList.length);
+
         var data = {
             from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
             to: 'lsfisher@usc.edu',
             subject: `Shame...${req.body.username} wasn\'t able to accomplish their goal in time!`,
-            text: `${req.body.username} wasn\'t able to ${req.body.description}! Shame! Shame! Shame!`
+            html: message
         };
 
         mailgun.messages().send(data, function(error, body) {
