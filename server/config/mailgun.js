@@ -115,7 +115,7 @@ module.exports = {
 
         var data = {
             from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
-            to: 'lsfisher@usc.edu',
+            to: email,
             subject: `Shame...${req.body.username} wasn\'t able to accomplish their goal in time!`,
             html: message
         };
