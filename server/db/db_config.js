@@ -1,9 +1,16 @@
+/*The database consists of 3 tables: Users, Emails, and Goals.
+A user contains a username, salt, email, hashed password, and password(set as VIRTUAL [ie. not visible in DB]).
+A goal belongs to a user instance, thus each goal has userId associated with it. It has a description,
+a deadline(in datetime format), hasExpired, and hasCompleted fields.
+An email also belongs to a user and emails can be pulled by the associated userId. 
+*/
+
 var Sequelize = require('sequelize');
 var pg = require('pg');
 var db = new Sequelize('postgres://admin:IRYNMXNYKZSGGJXE@aws-us-east-1-portal.9.dblayer.com:11612/compose');
 var bcrypt = require('bcrypt');
 
-// console.log('db', db);
+// Checks if the database has been loaded - appears in the console
 db.authenticate()
 	.then(function(err) {
 		console.log('Successful Connection to the database');
@@ -22,12 +29,15 @@ var User = db.define('User', {
 	},
 	email: Sequelize.STRING,
   	password_hash: Sequelize.STRING,
+
+  	/*Password hashing and storage is done here. The 'salt' and 'hash' vars
+  	below use bcrypt for encryption and this.setDataValue sets the values to
+  	their collumn in the DB*/
   	password: {
   		type: Sequelize.VIRTUAL,
   		set: function(val) {
   			let salt = bcrypt.genSaltSync(10);
   			let hash = bcrypt.hashSync(val, salt);
-  			console.log('hash func', hash);
 
   			this.setDataValue('password', val);
   			this.setDataValue('password_hash', hash);
@@ -65,4 +75,3 @@ Email.sync();
 exports.User = User;
 exports.Goal = Goal;
 exports.Email = Email;
-//module.exports = db;

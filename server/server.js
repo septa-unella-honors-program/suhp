@@ -21,6 +21,8 @@ app.use(cors());
 app.use(bodyParser.json({extended:false}));
 app.use(express.static('client'));
 app.use(morgan('dev'));
+
+// All incoming requests are sent to the routers located in the config/routes.js file
 app.use('/', router);
 
 

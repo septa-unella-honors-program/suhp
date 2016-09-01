@@ -1,3 +1,5 @@
+/*This page sets up the routes to the applicaiton*/
+
 var controller =require('../controllers/controllers');
 var router = require('express').Router();
 
