@@ -4,6 +4,10 @@ var bcrypt = require('bcrypt');
 
 module.exports= {
 
+    /*This endpoint is used for siging in. The user is grabbed from the DB
+    and the password that is passed in is compared against the user's password_hash
+    using the bcrypt validation method 'compareSync'*/
+
 	get:function(req,res){
         console.log('req', req);
         db.User.findOne({where: {
@@ -17,7 +21,6 @@ module.exports= {
             } else {
 
                 //compare password with has in db
-                console.log('does pass match? ', bcrypt.compareSync(req.query.password, user.password_hash));
                 if(bcrypt.compareSync(req.query.password, user.password_hash)) {
                     res.status(200).send(user);            
                 } else {
@@ -30,6 +33,10 @@ module.exports= {
              res.status(404).send('There was an error retrieving data from the database', err);
         }); 
 	},
+
+    /*This endpoint is used for signing up to the application. It creates a user in the DB
+    and is expecting a username, email, and password. The logic for password hashing
+    is located in db/db_config.js*/
 
 	post:function(req,res){
      db.User.create(

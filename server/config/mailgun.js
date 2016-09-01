@@ -1,3 +1,7 @@
+/*In this file, the server connects to the mailgun API to send messages to users
+The mailgun api requires a key, which was imported from './server_config.js'
+*/
+
 var key = require('./server_config.js');
 var domain = 'sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org';
 var mailgun = require('mailgun-js')({ apiKey: key.mg, domain: domain });
@@ -6,7 +10,10 @@ var gif = require('./giphy.js');
 
 module.exports = {
 
+    /*This function sends an email to a user's email list every time he/she adds a goal. It's 
+    invoked in the server/models/goalModel.js file*/
     sendInitialEmails: function(userEmailList, req) {
+
         //3 'Help Me' gifs from giphy
         let gifList = ['http://media4.giphy.com/media/Y8ocCgwtdj29O/200w_d.gif',
             'https://media4.giphy.com/media/l46Cbqvg6gxGvh2PS/200_d.gif',
@@ -27,7 +34,7 @@ module.exports = {
 	          					</div>
       						</div>
   						   </div>`
-            
+            // This is the body of the email
             var data = {
                 from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
                 to: email,
@@ -43,6 +50,8 @@ module.exports = {
 
     },
 
+    /*This function is wrapped in a cronjob in models/goalModel.js and sends a reminder 
+    email to the user's email list 2 days before a user's goal deadline has been reached*/
     sendReminderEmails: function(userEmailList, req) {
 
         //3 'Reminder' gifs from giphy
@@ -79,6 +88,8 @@ module.exports = {
         });
     },
 
+     /*This function is wrapped in a cronjob in models/goalModel.js and sends a shame 
+    email to the user's email list as soon as the goal deadline has passed*/
     sendShameEmails: function(userEmailList, req) {
 
         //3 'Shame' gifs from giphy
@@ -86,6 +97,10 @@ module.exports = {
             'https://media4.giphy.com/media/m6tmCnGCNvTby/200_d.gif',
             'http://media3.giphy.com/media/m6ljvZNi8xnvG/200_d.gif'
         ];
+
+        userEmailList.forEach(function(email){
+
+        let randomIndex = Math.floor(Math.random() * gifList.length);
 
         let message = `<div style='display:flex;'>
                             <div style='flex-direction:row;'>
@@ -97,9 +112,6 @@ module.exports = {
                             </div>
                            </div>`
         
-        userEmailList.forEach(function(email){
-
-        let randomIndex = Math.floor(Math.random() * gifList.length);
 
         var data = {
             from: 'SUHP <postmaster@sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org>',
