@@ -7,11 +7,7 @@ angular.module('suhp', [
   .config(function($routeProvider) {
     $routeProvider
       .when('/signin', {
-        templateUrl: './auth/signin.html',
-        controller: 'AuthController'
-      })
-      .when('/', {
-        templateUrl: './auth/signin.html',
+        templateUrl: 'app/auth/signin.html',
         controller: 'AuthController'
       })
       .when('/signup', {

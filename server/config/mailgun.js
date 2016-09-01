@@ -23,7 +23,7 @@ module.exports = {
 	          					<span style='font-weight:bold'>${req.body.username} </span>
 	          					wants you to support them in accomplishing their goal ${req.body.description}!</p>
 	          					<div style='text-align:center;'>
-	          					<img src=http://media4.giphy.com/media/Y8ocCgwtdj29O/200w_d.gif></img>
+	          					<img src=${gifList[randomIndex]}></img>
 	          					</div>
       						</div>
   						   </div>`

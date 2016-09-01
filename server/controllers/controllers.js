@@ -2,11 +2,11 @@ var userModel = require('../models/userModel');
 var goalModel = require('../models/goalModel');
 var emailModel = require('../models/emailModel');
 
-
 module.exports={
+
 	users:{
 		get: function(req,res){
-
+			console.log('req?', req);
 			userModel.get(req,res);
 			
 		},
