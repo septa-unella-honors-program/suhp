@@ -6,7 +6,7 @@ module.exports={
 
 	users:{
 		get: function(req,res){
-			console.log('req?', req);
+			
 			userModel.get(req,res);
 			
 		},
