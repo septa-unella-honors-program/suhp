@@ -2,6 +2,13 @@ body {
   background-color: red;
 }
 
+.userdash-header {
+  text-align: center;
+}
+
+nav {
+  text-align: right;
+}
 
 .nav-component {
   display: inline;
