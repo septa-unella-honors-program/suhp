@@ -29,7 +29,6 @@ angular.module('suhp.dashboard', [])
   //attached to ng-submit
   vm.addGoal = function(){
     Dashboard.storeUserGoals(vm.goal)
-      //need to figure out has expired and has completed checkbox
   }
 
 })

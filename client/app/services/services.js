@@ -7,6 +7,7 @@ angular.module('suhp.services', [])
   return{
     currentUser:currentUser
   }
+
 })
 
 .factory('Auth', function($http){
