@@ -18,6 +18,11 @@ module.exports={
 	*/
 
 	post:function(req, res){
+		console.log("INSIDE EMAIL POST");
+		console.log(req.body);
+
+
+
 		db.User.findOrCreate({where: {
 			username: req.body.username
 		}})
@@ -29,9 +34,11 @@ module.exports={
 						email: address
 						})
 					})
-				})
+		})
 		.then(function() {
 
+			//When a user is created, an initial email is sent out to user's email list
+			//mg.sendInitialEmails(req.body.emails, req, res);
 			res.status(201).send('created');
 
 		})

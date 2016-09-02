@@ -85,7 +85,7 @@ module.exports={
                     
                     
 
-                    res.sendStatus(created ? 201 : 200);
+                    //res.sendStatus(created ? 201 : 200);
                 }); 
             });
         })
@@ -97,6 +97,8 @@ module.exports={
 
         db.Goal.findOrCreate({where:{id:req.query.goalId}})
         .spread(function(goal){
+
+            // console.log(goal);
             console.log(goalCronJobDB);
             console.log(goalCronJobDB[req.query.goalId]);
             console.log(goalCronJobDB[req.query.goalId].goalJobDeadline);
