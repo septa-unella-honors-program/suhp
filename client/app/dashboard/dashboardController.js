@@ -1,21 +1,22 @@
 angular.module('suhp.dashboard', [])
 
 
-.controller("DashController", function (Dashboard, User){
-
+.controller("DashController", function ($scope, Dashboard, User){
+  console.log("dash controller start");
 
   //angular 1.5 convention. use this keyword in place of $scope
-  var username = User.currentUser;
-  var vm = this;
-  vm.data = {};
-  vm.goal = {};
-  vm.goal.user = username;
+  //var username = User.currentUser;
+  var username = "lucas";
+  // var vm = this;
+  $scope.data = {};
+  $scope.goal = {};
+  $scope.goal.user = username;
   //will render list of user goals upon initialization
   var initializeGoals = function() {
     //need to inject user factory
     Dashboard.getUserGoals(username)
     .then(function(goals){
-      vm.data.goals = goals;
+      $scope.data.goals = goals;
     })
     .catch(function(error){
       console.error(error)
@@ -29,12 +30,16 @@ angular.module('suhp.dashboard', [])
 
 
   //attached to ng-submit
-  vm.addGoal = function(){
-    Dashboard.storeUserGoals(vm.goal)
+  $scope.addGoal = function(){
+    console.log("adding goal");
+    console.log($scope.goal);
+    Dashboard.storeUserGoals($scope.goal)
   }
 
-  var goalCompletion = function(vm.goal.goalId){
-    Dashboard.updateCompletion(vm.goal.goalId)
+  $scope.goalCompletion = function(goalId){
+    console.log("updating goal completion")
+    console.log(goalId);
+    Dashboard.updateCompletion(goalId)
   };
 
 })

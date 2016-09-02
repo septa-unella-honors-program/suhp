@@ -1,3 +1,7 @@
+*{
+  border:1px solid black;
+}
+
 #goalstable {
   border: solid;
   color: green
@@ -50,4 +54,14 @@ nav {
 .friendlist {
   margin: 0 auto;
   text-align: center;
+}
+
+.fetchedGoalDescription, .fetchedGoalDeadline, .fetchedButton {
+  display: inline-block;
+  height: 30px;
+  /*float:left;*/
+}
+
+.fetchedButton{
+  float:right;
 }
