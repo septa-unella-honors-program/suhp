@@ -11,12 +11,14 @@ angular.module('suhp.services', [])
 .factory('Auth', function($http){
   //factory to post username to database upon signup
   var signup = function(user){
+    console.log('user', user);
     return $http({
       method: 'POST',
       url: '/signup',
       data: user
     })
     .then(function(response){
+      console.log('success', response);
       return response.data;
     })
     .catch(function(error){

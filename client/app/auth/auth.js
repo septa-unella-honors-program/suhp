@@ -17,13 +17,12 @@ angular.module('suhp.auth', [])
   }
 
 //Sign up should check username availability
-
-  vm.signup = function(){
-
+  vm.signup = function() {
+    console.log('button clicked');
     Auth.signup(vm.user)
 
       .then(function(response){
-
+        console.log('response', response);
         vm.hideSignup = true;
         vm.showFriendForm = true;
 

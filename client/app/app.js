@@ -12,7 +12,7 @@ angular.module('suhp', [
       })
       .when('/signup', {
         templateUrl: 'app/auth/signup.html',
-        controller: 'AuthController'
+        controller: 'AuthController as ctrl'
       })
       .when('/goal', {
         templateUrl: 'app/dashboard/dashboard.html',
