@@ -1,8 +1,9 @@
-#goalstable {
-  border: solid;
-  color: green
+body {
+  background-color: red;
 }
 
-#navbar {
 
+.nav-component {
+  display: inline;
+  background-color: white;
 }
