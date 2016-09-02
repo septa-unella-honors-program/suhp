@@ -1,6 +1,7 @@
 angular.module('suhp.auth', [])
 
-.controller('AuthController', [function(Auth){
+.controller('AuthController', function(Auth) {
+
   var vm = this;
   vm.user = {};
   vm.user.emails =[];
@@ -60,4 +61,4 @@ angular.module('suhp.auth', [])
       });
   };
 
-}]);
+});
