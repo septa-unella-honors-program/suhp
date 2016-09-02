@@ -1,13 +1,13 @@
 //contains all client-side services for signup, signin, and dashboard
 
 angular.module('suhp.services', [])
-.factory('User', function){
+.factory('User', function(){
   var currentUser=null;
 
   return{
     currentUser:currentUser
   }
-}
+})
 .factory('Auth', function($http){
   //factory to post username to database upon signup
   var signup = function(user){
@@ -117,7 +117,8 @@ angular.module('suhp.services', [])
 
   return {
     getUserGoals : getUserGoals,
-    storeUserGoals: storeUserGoals
+    storeUserGoals: storeUserGoals,
+    updateCompletion: updateCompletion
   }
 
 
