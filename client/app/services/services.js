@@ -120,7 +120,7 @@ angular.module('suhp.services', [])
       params: {
         goalId: goalId}
     })
-    .then(function(response){
+    .then(function(){
       console.log("successful put request")
     })
     .catch(function(error){
