@@ -6,21 +6,7 @@
     <title></title>
   </head>
   <body>
-<<<<<<< 478e95cd855a170e726eab50f243685eb7893064
-<<<<<<< d43d1def981cae00b68f668f63b5b4f8c1e20bb9
-    <div class="jumbotron">
-      <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-    </div>
     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-=======
-    <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-
->>>>>>> [pull] progress on user factory
-=======
-
-    <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-
->>>>>>> [pull] progress on user factory
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -37,18 +23,13 @@
     <div></div>
       <form class="goals-input" ng-submit="addGoal()">
         <input id ="description" type="text" ng-model="goal.description" value="" placeholder="My goal is to...">
-        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward"> -->
         <input id="deadline" type="date" ng-model="goal.deadline" value="">
         <input type="submit" name="name" value="Submit">
       </form>
-
-
       <div class="goalsList" ng-repeat="goal in data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
         <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})">Verify Goal Completion</button>
-        <!-- //button to verify
-        //goal factory method->PUT request to /goals endpoint using goal id -->
 
       </div>
   </body>

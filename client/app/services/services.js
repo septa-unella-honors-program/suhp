@@ -1,9 +1,9 @@
 //contains all client-side services for signup, signin, and dashboard
 
 angular.module('suhp.services', [])
+
 .factory('User', function(){
   var currentUser=null;
-
   return{
     currentUser:currentUser
   }
@@ -111,9 +111,18 @@ angular.module('suhp.services', [])
   };
 
 
-  var updateCompletion = function(goalId) {
+  var updateCompletion = function(params) {
     return $http({
-      method: 'PUT'
+      method: 'PUT',
+      URL: '/goals',
+      params: {
+        goalId: goalId}
+    })
+    .then(function(){
+      console.log("successful put request")
+    })
+    .catch(function(error){
+      console.error("There was an error with your request: ", error)
 
     })
   }
