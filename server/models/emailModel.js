@@ -34,7 +34,6 @@ module.exports={
 					})
 		})
 		.then(function() {
-
 			//When a user is created, an initial email is sent out to user's email list
 			//mg.sendInitialEmails(req.body.emails, req, res);
 			res.status(201).send('created');
