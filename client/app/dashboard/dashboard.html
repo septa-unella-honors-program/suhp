@@ -2,27 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../../styles/main.css">
     <title></title>
   </head>
   <body>
-    <h1>SUHP</h1>
-      <ul id="navbar">
-        <ul>username here</ul>
-        <ul><a href="">Friends</a></ul>
-        <ul><a href="">Sign Out</a></ul>
-      </ul>
+    <div class="jumbotron">
+      <h1 class="userdash-header">Septa Unella's Honor Program</h1>
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <ul class="nav navbar-nav">
+          <ul class="nav-component"><a href="#">User Dashboard</a></ul>
+          <ul class="nav-component"><a href="#">Logout</a></ul>
+        </ul>
+      </div>
     </nav>
+      <!-- <ul id="navbar">
+        <ul>username here</ul>
+        <ul><a href="">Sign Out</a></ul>
     <div></div>
-      <form class="goals-input" ng-submit="addGoal">
+        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward"> -->
+
+    <div></div>
+      <form class="goals-input" ng-submit="addGoal()">
         <input id ="description" type="text" ng-model="goal.description" value="" placeholder="My goal is to...">
         <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward"> -->
-        <input id="deadline" type="text" ng-model="goal.deadline" value="" placeholder="Deadline(ex: March 5, 2017)">
+        <input id="deadline" type="date" ng-model="goal.deadline" value="">
         <input type="submit" name="name" value="Submit">
       </form>
 
-      <div class="goalsList" ng-repeat="goal in data.goals">
-        <div class="fetchedGoalDescription">{{goal.description}}</div>
-        <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
+      <div class="goalsList" ng-repeat="goals in data.goals">
+        <div class="goal">{{goals.description}}</div>
+        <div class="dead">{{goals.deadline}}</div>
       </div>
   </body>
 </html>

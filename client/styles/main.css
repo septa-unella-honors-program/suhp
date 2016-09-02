@@ -1,11 +1,17 @@
-
 #goalstable {
   border: solid;
   color: green
 }
 
-#navbar {
+.userdash-header {
+  text-align: center;
+  
+}
 
+.nav-component {
+  display: inline;
+  background-color: white;
+  text-align: right
 }
 
 .authPadding{
