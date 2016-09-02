@@ -4,7 +4,12 @@ body {
 
 .userdash-header {
   text-align: center;
-  
+}
+
+nav {
+  float: right;
+  text-align: right;
+
 }
 
 .nav-component {

@@ -1,6 +1,7 @@
 angular.module('suhp.auth', [])
 
-.controller('AuthController', function($scope, Auth, $location){
+.controller('AuthController', function($scope, Auth, User, $location){
+
   $scope.user = {};
 
 //Sign up should check username availability
@@ -13,6 +14,7 @@ angular.module('suhp.auth', [])
                 //if username is taken,
                   //then ng-show *username is taken, try another name
                 //else change view to dashboard
+        //User.currentUser=response.username
 
         $location.path('/dashboard');
       })
