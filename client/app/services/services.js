@@ -7,7 +7,10 @@ angular.module('suhp.services', [])
   return{
     currentUser:currentUser
   }
+
 })
+
+
 .factory('Auth', function($http){
   //factory to post username to database upon signup
   var signup = function(user){
@@ -112,6 +115,7 @@ angular.module('suhp.services', [])
   var updateCompletion = function(goalId) {
     return $http({
       method: 'PUT'
+
     })
   }
 

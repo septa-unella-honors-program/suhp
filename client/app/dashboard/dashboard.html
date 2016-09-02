@@ -6,10 +6,9 @@
     <title></title>
   </head>
   <body>
-    <div class="jumbotron">
-      <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-    </div>
+
     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -38,7 +37,7 @@
       <div class="goalsList" ng-repeat="goal in data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
-        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})"></button>
+        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})">Verify Goal Completion</button>
         <!-- //button to verify
         //goal factory method->PUT request to /goals endpoint using goal id -->
 
