@@ -1,6 +1,7 @@
 angular.module('suhp.dashboard', [])
 
-.controller("DashController", function (this, Dashboard){
+.controller("DashController", function (Dashboard){
+  //angular 1.5 convention. use this keyword in place of $scope
   var vm = this;
   vm.data = {};
   vm.goal = {};
