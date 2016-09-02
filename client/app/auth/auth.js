@@ -10,7 +10,7 @@ angular.module('suhp.auth', [])
     return vm.userFound;
   };
   vm.usernameTaken;
-  vm.hideSignup;
+  vm.hideSignup = false;
   vm.showFriendForm = false;
   vm.addFriend = function(){
     vm.user.emails.push(vm.user.friendEmail);
