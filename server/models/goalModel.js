@@ -98,24 +98,31 @@ module.exports={
         db.Goal.findOrCreate({where:{id:req.query.goalId}})
         .spread(function(goal){
 
-            // console.log(goal);
-            console.log(goalCronJobDB);
-            console.log(goalCronJobDB[req.query.goalId]);
-            console.log(goalCronJobDB[req.query.goalId].goalJobDeadline);
-            console.log(goalCronJobDB[req.query.goalId].goalJobShame);
-            res.json(goalCronJobDB);
-            if(goalCronJobDB[req.query.goalId].goalJobDeadline){
+            //console.log(goal);
+            // console.log(goalCronJobDB);
+            // console.log(goalCronJobDB[req.query.goalId]);
+            
+            // res.json(goalCronJobDB);
+
+            if(goalCronJobDB[req.query.goalId]){
+                if(goalCronJobDB[req.query.goalId].goalJobDeadline){
+                console.log("reminder email CANCELLED");
                 goalCronJobDB[goal.get('id')].goalJobDeadline.cancel();
+                }
             }
 
-            if(goalCronJobDB[req.query.goalId].goalJobShame){
+            if(goalCronJobDB[req.query.goalId]){
+                if(goalCronJobDB[req.query.goalId].goalJobShame){
+                console.log("deadline email CANCELLED");
                 goalCronJobDB[req.query.goalId].goalJobShame.cancel();
+                }
             }
 
             goal.update({
                 hasCompleted:true
             })
             .then(function(){
+                res.json(goalCronJobDB);
                 //res.send("Successful update");
             });
         })
