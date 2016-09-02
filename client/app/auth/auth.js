@@ -1,6 +1,6 @@
 angular.module('suhp.auth', [])
 
-.controller('AuthController', function(Auth) {
+.controller('AuthController', function(Auth, User) {
 
   var vm = this;
   vm.user = {};
@@ -50,6 +50,7 @@ angular.module('suhp.auth', [])
     Auth.signin(vm.user)
       .then(function(){
         if(vm.userFound){
+          User.currentUser = vm.user.username;
           $location.path('/dashboard');
         } else {
           showSigninError();
