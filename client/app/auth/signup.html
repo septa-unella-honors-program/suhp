@@ -1,4 +1,4 @@
-<div class = "container" ng-controller = "AuthController" as ctrl >
+<div class = "container">
 
   <div class="jumbotron">
     <h1>Septa Unella Honors Program</h1>
@@ -19,6 +19,7 @@
           </p>
           <input required type='text' ng-model='ctrl.user.username'>
         </div>
+        <p ng-show='ctrl.errorMsg.length > 0' class="error">{{ctrl.errorMsg}}</p>
         <div class='authPadding'>
           <p>What's your email?</p>
           <input required type='text' ng-model='ctrl.user.email'>
