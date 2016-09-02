@@ -12,7 +12,7 @@
         <div class="navbar-header">
         </div>
         <ul class="nav navbar-nav">
-          <ul class="nav-component"><a href="#">User Dashboard</a></ul>
+          <ul class="nav-component">username</ul>
           <ul class="nav-component"><a href="#">Logout</a></ul>
         </ul>
       </div>
@@ -34,6 +34,10 @@
       <div class="goalsList" ng-repeat="goal in data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
+        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})"></button>
+        //button to verify
+        //goal factory method->PUT request to /goals endpoint using goal id
+
       </div>
   </body>
 </html>
