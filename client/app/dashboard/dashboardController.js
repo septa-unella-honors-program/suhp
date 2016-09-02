@@ -1,13 +1,14 @@
 angular.module('suhp.dashboard', [])
 
-.controller("DashController", function ($scope, Dashboard){
-  $scope.data = {};
-  $scope.goal = {};
+.controller("DashController", function (this, Dashboard){
+  var vm = this;
+  vm.data = {};
+  vm.goal = {};
   //will render list of user goals upon initialization
   var initializeGoals = function() {
     Dashboard.getUserGoals()
     .then(function(goals){
-      $scope.data.goals = goals;
+      vm.data.goals = goals;
     })
     .catch(function(error){
       console.error(error)
@@ -18,8 +19,8 @@ angular.module('suhp.dashboard', [])
 
 
   //attached to ng-submit
-  $scope.addGoal = function(){
-    Dashboard.storeUserGoals($scope.goal)
+  vm.addGoal = function(){
+    Dashboard.storeUserGoals(vm.goal)
   }
 
 })
