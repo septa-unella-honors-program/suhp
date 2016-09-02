@@ -1,13 +1,9 @@
 body {
-  background-color: red
+  background-color: red;
 }
 
-
-#goalstable {
-  border: solid;
-  color: green
-}
 
 .nav-component {
-  display: block;
+  display: inline;
+  background-color: white;
 }
