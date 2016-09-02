@@ -22,13 +22,11 @@
       <ul id="navbar">
         <ul>username here</ul>
         <ul><a href="">Sign Out</a></ul>
-    <div></div>
-        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward">
+
 
     <div></div>
       <form class="goals-input" ng-submit="addGoal()">
         <input id ="description" type="text" ng-model="goal.description" value="" placeholder="My goal is to...">
-        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward"> -->
         <input id="deadline" type="date" ng-model="goal.deadline" value="">
         <input type="submit" name="name" value="Submit">
       </form>
@@ -38,8 +36,6 @@
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
         <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})">Verify Goal Completion</button>
-        <!-- //button to verify
-        //goal factory method->PUT request to /goals endpoint using goal id -->
 
       </div>
   </body>
