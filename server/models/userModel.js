@@ -47,7 +47,7 @@ module.exports= {
           res.sendStatus(200);  
         })
         .catch(function(err) {
-            console.log('There was a DB error', err);
+            res.send(err);
         })
 	console.log("in user post model");
 	}

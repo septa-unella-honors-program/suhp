@@ -12,19 +12,24 @@ angular.module('suhp.auth', [])
   vm.usernameTaken;
   vm.hideSignup = false;
   vm.showFriendForm = false;
+  vm.errorMsg = '';
   vm.addFriend = function(){
     vm.user.emails.push(vm.user.friendEmail);
   }
 
 //Sign up should check username availability
   vm.signup = function() {
-    console.log('button clicked');
+  
     Auth.signup(vm.user)
 
       .then(function(response){
-        console.log('response', response);
-        vm.hideSignup = true;
-        vm.showFriendForm = true;
+        if(response) {
+          vm.errorMsg = response.errors[0].message;  
+        }
+        if(!vm.errorMsg.length) {
+          vm.showFriendForm = true;
+        }
+          vm.hideSignup = true; 
 
       })
       .catch(function(error){

@@ -19,6 +19,7 @@
           </p>
           <input required type='text' ng-model='ctrl.user.username'>
         </div>
+        <p ng-show='ctrl.errorMsg.length > 0' class="error">{{ctrl.errorMsg}}</p>
         <div class='authPadding'>
           <p>What's your email?</p>
           <input required type='text' ng-model='ctrl.user.email'>
