@@ -6,9 +6,6 @@
     <title></title>
   </head>
   <body>
-    <div class="jumbotron">
-      <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-    </div>
     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -20,27 +17,16 @@
         </ul>
       </div>
     </nav>
-      <ul id="navbar">
-        <ul>username here</ul>
-        <ul><a href="">Sign Out</a></ul>
-    <div></div>
-        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward">
-
     <div></div>
       <form class="goals-input" ng-submit="addGoal()">
         <input id ="description" type="text" ng-model="goal.description" value="" placeholder="My goal is to...">
-        <!-- <input id="reward" type="text" name="name" value="" placeholder="Reward"> -->
         <input id="deadline" type="date" ng-model="goal.deadline" value="">
         <input type="submit" name="name" value="Submit">
       </form>
-
-
       <div class="goalsList" ng-repeat="goal in data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
-        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})"></button>
-        <!-- //button to verify
-        //goal factory method->PUT request to /goals endpoint using goal id -->
+        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})">Verify Goal Completion</button>
 
       </div>
   </body>
