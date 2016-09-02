@@ -1,8 +1,14 @@
-#goalstable {
-  border: solid;
-  color: green
+body {
+  background-color: red;
 }
 
-#navbar {
+.userdash-header {
+  text-align: center;
+  
+}
 
+.nav-component {
+  display: inline;
+  background-color: white;
+  text-align: right
 }
