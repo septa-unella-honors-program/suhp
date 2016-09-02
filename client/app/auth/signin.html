@@ -1,8 +1,32 @@
-<div>
-  <h1>signin<h1>
-  <form name="signinForm" ng-submit='signin()'>
-    <input type='text'ng-model='user.username'>
-    <button>signin</button>
-    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
-  </form>
+<div ng-controller="AuthController" as ctrl>
+
+  <div class="container">
+
+    <div class="row jumbotron">
+      <div class="col-md-12">
+        <h1 class= "signinTitle">Septa Unella Honors Program</h1>
+      </div>
+    </div>
+
+    <div class = "row signinform">
+
+      <div class="col-md-12">
+        <form name=signin ng-submit="ctrl.signin()">
+          Username:
+          <input type="text" ng-model="ctrl.user.username" required placeholder="Enter username">
+          <div ng-if="ctrl.showSigninError()">
+            <br>
+            Sign in failed. Please try again
+          </div>
+          <br><br>
+          Password:
+          <input type="password" ng-model="ctrl.user.password" required placeholder="Enter password">
+          <br><br>
+          <input class="btn btn-info" value="Sign In" type="submit">
+        </form>
+      </div>
+
+    </div>
+
+  </div>
 </div>

@@ -22,6 +22,4 @@ angular.module('suhp', [
         redirectTo: '/signin'
       })
   })
-  .run(function($location) {
-    $location.path('/signin');
-  });
+  
