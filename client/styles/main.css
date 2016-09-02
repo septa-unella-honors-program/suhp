@@ -1,3 +1,4 @@
+
 #goalstable {
   border: solid;
   color: green
@@ -5,4 +6,37 @@
 
 #navbar {
 
+}
+
+.authPadding{
+  padding-bottom: 15px;
+}
+
+
+.jumbotron {
+  background-color: pink;
+  background-position: center;
+  background-size: contain;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signinform {
+  margin: 0 auto;
+  background-color: grey;
+  text-align: center;
+  width: 250px;
+  padding-top: 50px;
+  padding-bottom: 30px
+
+}
+
+.signup {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.friendlist {
+  margin: 0 auto;
+  text-align: center;
 }
