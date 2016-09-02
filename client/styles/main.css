@@ -1,8 +1,13 @@
+body {
+  background-color: red
+}
+
+
 #goalstable {
   border: solid;
   color: green
 }
 
-#navbar {
-
+.nav-component {
+  display: block;
 }
