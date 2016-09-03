@@ -7,62 +7,62 @@ var goalCronJobDB={};
 
 console.log("JUST AFTER CRON JOB DATABASE CREATION");
 
-db.Goal.findAll({where:{
-    hasExpired:false,
-    hasCompleted:false
-}})
-.then(function(goals){
-    //console.log(goals);
+// db.Goal.findAll({where:{
+//     hasExpired:false,
+//     hasCompleted:false
+// }})
+// .then(function(goals){
+//     //console.log(goals);
     
-    goals.forEach(function(goal){
-        var req={body:{}};
-        db.User.findOrCreate({where:{id:goal.get('UserId')}})
-        .spread(function(user){
-            //console.log('USERNAME: '+user.get('username'));
-            req.body.username=user.get('username');
-            req.body.description=goal.get('description');
-            // console.log(req);
-            db.Email.findAll({ where: { 
-                UserId: user.get('id')
-                }})
-                .then(function(emails){
-                    var userEmailList=emails.map(function(email){
-                        return email.get('email');
-                    });
+//     goals.forEach(function(goal){
+//         var req={body:{}};
+//         db.User.findAll({where:{id:goal.get('UserId')}})
+//         .spread(function(user){
+//             //console.log('USERNAME: '+user.get('username'));
+//             req.body.username=user.get('username');
+//             req.body.description=goal.get('description');
+//             // console.log(req);
+//             db.Email.findAll({ where: { 
+//                 UserId: user.get('id')
+//                 }})
+//                 .then(function(emails){
+//                     var userEmailList=emails.map(function(email){
+//                         return email.get('email');
+//                     });
 
-                    goalCronJobDB[goal.get('id')]={};
+//                     goalCronJobDB[goal.get('id')]={};
 
-                    console.log("**********");
-                    console.log("goal deadline at "+goal.get('deadline') );
-                    var shameDeadline = new Date( goal.get('deadline'));
-                    console.log( "shameDeadline "+shameDeadline);
-                    var reminderDeadline= new Date(goal.get('deadline'));
-                    reminderDeadline.setDate(reminderDeadline.getDate()-2);
-                    console.log( "reminderDeadline "+reminderDeadline);
+//                     console.log("**********");
+//                     console.log("goal deadline at "+goal.get('deadline') );
+//                     var shameDeadline = new Date( goal.get('deadline'));
+//                     console.log( "shameDeadline "+shameDeadline);
+//                     var reminderDeadline= new Date(goal.get('deadline'));
+//                     reminderDeadline.setDate(reminderDeadline.getDate()-2);
+//                     console.log( "reminderDeadline "+reminderDeadline);
                     
-                    var goalJobDeadline= schedule.scheduleJob(reminderDeadline, function(){
-                        console.log("reminderDeadline email sent");
-                        mailGun.sendReminderEmails(userEmailList,req);
-                    });
-                    goalCronJobDB[goal.get('id')].goalJobDeadline=goalJobDeadline;
+//                     var goalJobDeadline= schedule.scheduleJob(reminderDeadline, function(){
+//                         console.log("reminderDeadline email sent");
+//                         mailGun.sendReminderEmails(userEmailList,req);
+//                     });
+//                     goalCronJobDB[goal.get('id')].goalJobDeadline=goalJobDeadline;
 
-                    var goalJobShame=schedule.scheduleJob(shameDeadline, function(){
-                        console.log("shame email sent");
-                        mailGun.sendShameEmails(userEmailList,req);
-                        console.log('shameDeadline GOALLLLL'+JSON.stringify(goal));
-                        goal.update({
-                            hasExpired:true
-                        });
+//                     var goalJobShame=schedule.scheduleJob(shameDeadline, function(){
+//                         console.log("shame email sent");
+//                         mailGun.sendShameEmails(userEmailList,req);
+//                         console.log('shameDeadline GOALLLLL'+JSON.stringify(goal));
+//                         goal.update({
+//                             hasExpired:true
+//                         });
 
-                    });
+//                     });
 
-                    goalCronJobDB[goal.get('id')].goalJobShame=goalJobShame;
-                    console.log("**********");
-            });
-        });
+//                     goalCronJobDB[goal.get('id')].goalJobShame=goalJobShame;
+//                     console.log("**********");
+//             });
+//         });
 
-    });
-});
+//     });
+// });
 
 module.exports={
 	get:function(req, res){

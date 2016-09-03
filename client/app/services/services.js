@@ -20,7 +20,7 @@ angular.module('suhp.services', [])
       data: user
     })
     .then(function(response){
-      console.log('success', response);
+      console.log('success', response.query);
       return response.data;
     })
     .catch(function(error){
@@ -55,13 +55,10 @@ angular.module('suhp.services', [])
       url: '/signin',
       params: userobj
     }).then(function(response){
-      if(response.data.length > 0){
-        if (response.data[0].username === userobj.username && response.data[0].password === userobj.password){
-          return userFound = true;
-        } else {
-          return userFound;
-        }
-      }
+
+      if(response.status == 200){
+          return response;
+        } 
     }).catch(function(error){
       console.error('+++line 52 services.js: There was a problem in services/sign in function');
     });
@@ -70,7 +67,6 @@ angular.module('suhp.services', [])
   return {
     signup : signup,
     signin: signin,
-    userFound: userFound,
     storeFriendEmailList : storeFriendEmailList
   }
 

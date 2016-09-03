@@ -1,75 +1,75 @@
 <div class = "container">
 
-  <div class="jumbotron">
-    <h1>Septa Unella Honors Program</h1>
-    <h3>Sign Up or Get Punished</h3>
-  </div>
+ <div class="jumbotron">
+   <h1>Septa Unella Honors Program</h1>
+   <h3>Sign Up or Get Punished</h3>
+ </div>
 
-  <!-- this is the code for user signup -->
-  <div class='row'>
-
-
-    <div class = "signup col-md-12">
-
-      <form name="signupForm" ng-submit='ctrl.signup()'>
-        <div class='authPadding'>
-          <p>What's your name?</p>
-          <p ng-show="ctrl.usernameTaken">
-            Try a new Username
-          </p>
-          <input required type='text' ng-model='ctrl.user.username'>
-        </div>
-        <p ng-show='ctrl.errorMsg.length > 0' class="error">{{ctrl.errorMsg}}</p>
-        <div class='authPadding'>
-          <p>What's your email?</p>
-          <input required type='text' ng-model='ctrl.user.email'>
-        </div>
-        <div class='authPadding'>
-          <p>Create a password:</p>
-          <input required type='password' ng-model='ctrl.user.password'>
-        </div>
-        <br>
-        <input class="btn btn-info" value="Join" type="submit">
-      </form>
-      <a href="#/signin">Already a member? <strong>Signin</strong></a>
-    </div>
+ <!-- this is the code for user signup -->
+ <div class='row'>
 
 
-  </div>
+   <div class = "signup col-md-12">
+
+     <form name="signupForm" ng-submit='ctrl.signup()'>
+       <div class='authPadding'>
+         <p>What's your name?</p>
+         <p ng-show="ctrl.usernameTaken">
+           Try a new Username
+         </p>
+         <input required type='text' ng-model='ctrl.user.username'>
+       </div>
+       <p ng-show='ctrl.errorMsg.length > 3' class="error">{{ctrl.errorMsg}}</p>
+       <div class='authPadding'>
+         <p>What's your email?</p>
+         <input required type='text' ng-model='ctrl.user.email'>
+       </div>
+       <div class='authPadding'>
+         <p>Create a password:</p>
+         <input required type='password' ng-model='ctrl.user.password'>
+       </div>
+       <br>
+       <input class="btn btn-info" value="Join" type="submit">
+     </form>
+     <a href="#/signin">Already a member? <strong>Signin</strong></a>
+   </div>
+
+
+ </div>
 
 <!-- This is the code for adding friends -->
 
-  <div class = 'row' ng-show='ctrl.showFriendForm'>
+ <div class = 'row' ng-show='ctrl.showFriendForm'>
 
-    <div class='friendlist col-md-6'>
-      <h3>Add a Judger</h3>
-      <form ng-submit='ctrl.addFriend()'>
-        <p>Enter your friend's email:</p>
-        <div id='friendEmail'>
-          <input type="email" placeholder="email" ng-model='ctrl.user.friendEmail'>
-        </div>
-        <br>
-        <!-- <p>Enter your friend's name:</p>
-        <div id='friendName'>
-          <input type='text' placeholder="friend name" ng-model='ctrl.user.friendName'>
-        </div>
-        <br> -->
-        <input type="submit" class="btn btn-info" value="Add a friend">
-      </form>
-    </div>
+   <div class='friendlist col-md-6'>
+     <h3>Add a Judger</h3>
+     <form ng-submit='ctrl.addFriend()'>
+       <p>Enter your friend's email:</p>
+       <div id='friendEmail'>
+         <input type="email" placeholder="email" ng-model='ctrl.user.friendEmail'>
+       </div>
+       <br>
+       <!-- <p>Enter your friend's name:</p>
+       <div id='friendName'>
+         <input type='text' placeholder="friend name" ng-model='ctrl.user.friendName'>
+       </div>
+       <br> -->
+       <input type="submit" class="btn btn-info" value="Add a friend">
+     </form>
+   </div>
 
-    <div class='friendlist col-md-6'>
-      <h3>List of Judges</h3>
-      <div ng-repeat="friend in ctrl.user.emails">
-        <!-- <p>
-          {{ctrl.user.friendName}}
-        </p> -->
-        <p>
-          {{ctrl.user.friendEmail}}
-        </p>
-      </div>
-      <button class="btn btn-info" ng-click="ctrl.storeFriendEmailList()">Confirm List of Judges</button>
+   <div class='friendlist col-md-6'>
+     <h3>List of Judges</h3>
+     <div ng-repeat="friend in ctrl.user.emails">
+       <!-- <p>
+         {{ctrl.user.friendName}}
+       </p> -->
+       <p>
+         {{friend}}
+       </p>
+     </div>
+     <button class="btn btn-info" ng-click="ctrl.storeFriendEmailList()">Confirm List of Judges</button>
 
-  </div>
+ </div>
 
 </div>
