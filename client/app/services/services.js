@@ -21,6 +21,7 @@ angular.module('suhp.services', [])
     })
     .then(function(response){
       console.log('success', response.query);
+      
       return response.data;
     })
     .catch(function(error){
