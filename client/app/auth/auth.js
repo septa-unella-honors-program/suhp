@@ -24,8 +24,10 @@ angular.module('suhp.auth', [])
      if(response.message){
        vm.errorMsg = response.errors[0].message;
      } else {
+       User.currentUser = vm.user.username;
        vm.showFriendForm = true;
        vm.hideSignup = true;
+       console.log('vm user', vm.user);
      }
 
      })
@@ -54,6 +56,8 @@ angular.module('suhp.auth', [])
 
         if(response){          
           User.currentUser = vm.user.username;
+          console.log('vm user', vm.user);
+          console.log('currentUser', User.currentUser);
           $location.path('/goal');
         } else {
           vm.errorMsg = 'Username / Password Incorrect';
