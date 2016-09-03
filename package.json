@@ -2,7 +2,7 @@
   "name": "suhp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "postinstall": "bower cache clean && bower install",
     "start": "node server/server.js"
