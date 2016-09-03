@@ -33,7 +33,7 @@ angular.module('suhp.dashboard', [])
     Dashboard.storeUserGoals(vm.goal)
   }
 
-  var goalCompletion = function(vm.goal.goalId){
+  var goalCompletion = function(){
     Dashboard.updateCompletion(vm.goal.goalId)
   };
 

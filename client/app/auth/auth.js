@@ -1,14 +1,11 @@
 angular.module('suhp.auth', [])
 
-.controller('AuthController', function(Auth, User) {
+.controller('AuthController', function(Auth, User, $location) {
 
   var vm = this;
   vm.user = {};
   vm.user.emails =[];
   vm.userFound = Auth.userFound;
-  vm.showSigninError = function(){
-    return vm.userFound;
-  };
   vm.usernameTaken;
   vm.hideSignup = false;
   vm.showFriendForm = false;
@@ -18,33 +15,34 @@ angular.module('suhp.auth', [])
   }
 
 //Sign up should check username availability
-  vm.signup = function() {
-  
-    Auth.signup(vm.user)
+ vm.signup = function() {
 
-      .then(function(response){
-        if(response) {
-          vm.errorMsg = response.errors[0].message;  
-        }
-        if(!vm.errorMsg.length) {
-          vm.showFriendForm = true;
-        }
-          vm.hideSignup = true; 
+   Auth.signup(vm.user)
 
-      })
-      .catch(function(error){
-        usernameTaken = true;
-        console.log(error);
-      });
+     .then(function(response){
+       console.log('this is the res error',response);
+     if(response.message){
+       vm.errorMsg = response.errors[0].message;
+     } else {
+       vm.showFriendForm = true;
+       vm.hideSignup = true;
+     }
 
-  };
+     })
+     .catch(function(error){
+       usernameTaken = true;
+       console.log(error);
+     });
+
+ };
 
   vm.storeFriendEmailList = function(){
     Auth.storeFriendEmailList(vm.user.username, vm.user.emails)
     .then(function(response){
-      $location.path('/dashboard');
-    }).catch(function(error){
-      alert("Oops, the friend list didn't survive, please try again");
+      $location.path('/goal');
+    })
+    .catch(function(error){
+      console.log('there was an error', error);
     });
   };
 
@@ -52,12 +50,13 @@ angular.module('suhp.auth', [])
 
   vm.signin = function(){
     Auth.signin(vm.user)
-      .then(function(){
-        if(vm.userFound){
+      .then(function(response){
+
+        if(response){          
           User.currentUser = vm.user.username;
-          $location.path('/dashboard');
+          $location.path('/goal');
         } else {
-          showSigninError();
+          vm.errorMsg = 'Username / Password Incorrect';
         }
       })
       .catch(function(error){

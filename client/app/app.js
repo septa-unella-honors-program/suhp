@@ -8,7 +8,7 @@ angular.module('suhp', [
     $routeProvider
       .when('/signin', {
         templateUrl: 'app/auth/signin.html',
-        controller: 'AuthController'
+        controller: 'AuthController as ctrl'
       })
       .when('/signup', {
         templateUrl: 'app/auth/signup.html',
@@ -16,7 +16,7 @@ angular.module('suhp', [
       })
       .when('/goal', {
         templateUrl: 'app/dashboard/dashboard.html',
-        controller: 'DashController'
+        controller: 'DashController as ctrl'
       })
       .otherwise({
         redirectTo: '/signin'
