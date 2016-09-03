@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 // app.use(expressJWT({ secret: config.secret}).unless({ path: ['/signin', '/signup', '/email']}));
 
 // All incoming requests are sent to the routers located in the config/routes.js file
-app.use('/', router);
+app.use('*', router);
 
 
 app.set('port', process.env.PORT || 8080);
