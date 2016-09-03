@@ -11,7 +11,7 @@
 
    <div class = "signup col-md-12">
 
-     <form name="signupForm" ng-submit='ctrl.signup()'>
+     <form name="signupForm">
        <div class='authPadding'>
          <p>What's your name?</p>
          <p ng-show="ctrl.usernameTaken">
@@ -29,7 +29,7 @@
          <input required type='password' ng-model='ctrl.user.password'>
        </div>
        <br>
-       <input class="btn btn-info" value="Join" type="submit">
+       <button class="btn btn-info" ng-click='ctrl.signup()'>Join</button>
      </form>
      <a href="#/signin">Already a member? <strong>Signin</strong></a>
    </div>

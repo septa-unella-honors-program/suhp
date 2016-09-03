@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../../styles/main.css">
-    <title></title>
-  </head>
-  <body>
+<div class="container">
     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -18,16 +11,14 @@
       </div>
     </nav>
     <div></div>
-      <form class="goals-input" ng-submit="addGoal()">
-        <input id ="description" type="text" ng-model="goal.description" value="" placeholder="My goal is to...">
-        <input id="deadline" type="date" ng-model="goal.deadline" value="">
-        <input type="submit" name="name" value="Submit">
+      <form class="goals-input">
+        <input id ="description" type="text" ng-model="ctrl.goal.description" value="" placeholder="My goal is to...">
+        <input id="deadline" type="date" ng-model="ctrl.goal.deadline" value="">
+        <input type="submit" name="name" value="Submit" ng-click="ctrl.addGoal()">
       </form>
-      <div class="goalsList" ng-repeat="goal in data.goals">
+      <div class="goalsList" ng-repeat="goal in ctrl.data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
         <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
-        <button type="button" name="button" ng-submit="goalCompletion({{goal.id}})">Verify Goal Completion</button>
-
+        <button class="fetchedButton" type="button" name="button" ng-click="ctrl.goalCompletion(goal.id)">Verify Goal Completion</button>
       </div>
-  </body>
-</html>
+ </div>
