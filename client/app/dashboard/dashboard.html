@@ -1,21 +1,10 @@
 <div class="container">
     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-    <!-- <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
-        <ul class="nav navbar-nav">
-          <ul class="nav-component">username</ul>
-          <ul class="nav-component"><a href="#">Logout</a></ul>
-        </ul>
-      </div>
-    </nav> -->
     <div></div>
       <form class="goals-input">
         <input id ="description" type="text" ng-model="ctrl.goal.description" value="" placeholder="My goal is to...">
         <input id="deadline" type="date" ng-model="ctrl.goal.deadline" value="">
         <input type="submit" name="name" value="Submit" ng-click="ctrl.addGoal()">
-
       </form>
       <div class="goalsList" ng-repeat="goal in ctrl.data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>

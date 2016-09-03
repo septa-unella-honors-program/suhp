@@ -1,7 +1,7 @@
 angular.module('suhp.dashboard', [])
 
 
-.controller("DashController", function ($scope, Dashboard, User){
+.controller("DashController", function (Dashboard, User){
   console.log("dash controller start");
 
   //angular 1.5 convention. use this keyword in place of $scope
@@ -12,12 +12,13 @@ angular.module('suhp.dashboard', [])
   vm.goal = {};
   vm.goal.user = username;
 
+
   //will render list of user goals upon initialization
   vm.initializeGoals = function() {
     //need to inject user factory
     Dashboard.getUserGoals(username)
     .then(function(goals){
-      $scope.data.goals = goals;
+      vm.data.goals = goals;
     })
     .catch(function(error){
       console.error(error)
@@ -37,8 +38,5 @@ angular.module('suhp.dashboard', [])
     Dashboard.storeUserGoals(vm.goal)
   }
 
-  vm.goalCompletion = function(){
-    Dashboard.updateCompletion(vm.goal.goalId)
-  };
 
 })
