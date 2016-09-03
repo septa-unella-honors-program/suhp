@@ -16,10 +16,9 @@ angular.module('suhp', [
       })
       .when('/goal', {
         templateUrl: 'app/dashboard/dashboard.html',
-        controller: 'DashController'
+        controller: 'DashController as ctrl'
       })
       .otherwise({
         redirectTo: '/signin'
       })
   })
-  
