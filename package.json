@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "bower cache clean && bower install",
+    "postinstall": "bower install",
     "start": "node server/server.js"
   },
   "author": "Lee Mordell, Vivian Sze, Lucas Fisher, Lauren Settle",
