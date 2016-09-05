@@ -22,4 +22,3 @@ angular.module('suhp', [
         redirectTo: '/signin'
       })
   })
-  

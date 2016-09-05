@@ -110,11 +110,12 @@ angular.module('suhp.services', [])
 
 
   var updateCompletion = function(params) {
+    console.log(" in update completion in Factory" +params);
     return $http({
       method: 'PUT',
-      URL: '/goals',
+      url: '/goals',
       params: {
-        goalId: goalId}
+        goalId: params}
     })
     .then(function(){
       console.log("successful put request")
