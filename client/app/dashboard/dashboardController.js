@@ -4,8 +4,6 @@ angular.module('suhp.dashboard', [])
 .controller("DashController", function (Dashboard, User){
   console.log("dash controller start");
 
-  //angular 1.5 convention. use this keyword in place of $scope
-
   var vm = this;
   var username = User.currentUser;
   vm.data = {};
@@ -34,9 +32,16 @@ angular.module('suhp.dashboard', [])
   //attached to ng-submit
 
   vm.addGoal = function(){
-    console.log('user', vm.goal);
+    console.log("adding goal");
+    console.log(vm.goal);
     Dashboard.storeUserGoals(vm.goal)
   }
+
+  vm.goalCompletion = function(goalId){
+    console.log("updating goal completion")
+    console.log(goalId);
+    Dashboard.updateCompletion(goalId)
+  };
 
 
 })

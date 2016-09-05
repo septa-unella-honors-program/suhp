@@ -57,10 +57,12 @@ nav {
 }
 
 
+
 .error {
   color: red;
   font-style: italic;
 }
+
 
 .fetchedGoalDescription, .fetchedGoalDeadline, .fetchedButton {
   display: inline-block;
