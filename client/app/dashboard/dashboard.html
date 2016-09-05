@@ -1,11 +1,12 @@
 <div class="container">
-    <h4>You are signed in as {{username}}</h4>
-    <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-    <div></div>
+    <h6>You are signed in as {{username}}</h6>
+    <div class="jumbotron">
+      <h1 class="userdash-header">Septa Unella's Honor Program</h1>
+    </div>
       <form class="goals-input" >
         <input id ="description" type="text" ng-model="ctrl.goal.description" value="" placeholder="My goal is to...">
         <input id="deadline" type="date" ng-model="ctrl.goal.deadline" value="">
-        <input type="submit" name="name" value="Submit" ng-click="ctrl.addGoal()">
+        <input type="submit" class="btn btn-info" name="name" value="Submit" ng-click="ctrl.addGoal()">
       </form>
       <div class="goalsList" ng-repeat="goal in ctrl.data.goals">
         <div class="fetchedGoalDescription">{{goal.description}}</div>
