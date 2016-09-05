@@ -5,7 +5,8 @@ angular.module('suhp.dashboard', [])
   console.log("dash controller start");
 
   var vm = this;
-  var username = User.currentUser;
+  // var username = User.currentUser;
+  var username = "jim";
   vm.data = {};
   vm.goal = {};
   vm.goal.username = username;
