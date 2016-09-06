@@ -21,56 +21,16 @@ Front End
 Utilizes Angular 1.5, ng-route and Bootstrap. All factories are located in the services.js file. Routing is located in app.js. 
 
 
-|Endpoint | Method | Response | Expected |
-|         |        |          |          |
-| /signin | GET | **Array of single user where user login matched user in database | [{
-    "id": 1,
-    "username": "Lee",
-    "email": "lee@gmail.com",
-    "password": "pass",
-    "createdAt": "2016-08-28T18:12:15.031Z",
-    "updatedAt": "2016-08-28T18:12:15.031Z"
-  }]
+Backend Routes 
+---------
 
-{
-“username”:”lee”,
-“password”:”MKS”
-
-} |
-
-| /signup| POST|***If Successful |{
-    "username": "Lee",
-    "email": "lee@gmail.com",
-    "password": "pass",
-} |
-|/goals | GET| ***An array of all goals belonging to a user
-[  {
-    "id": 1,
-    "description": "to be the best lucas EVER",
-    "deadline": "2020-01-12T08:00:00.000Z",
-    "hasExpired": false,
-    "hasCompleted": false,
-    "createdAt": "2016-08-30T18:48:17.491Z",
-    "updatedAt": "2016-08-30T18:48:17.491Z",
-    "UserId": 1
-  }
-...{}....{}] | {
-    "username": "Lee",
-}|
-|/goals | POST| ***if successful |  {
-“username”:”lucas”,
-“description”:”lose 5 lbs”,
-“deadline”: “September 20, 2016 17:58:00”
-}|
-|/goals | PUT | **if successful |  ***get the goal ID from the field ID in the goals JSON object returned in the GET request
-{
-     goalId:1;
-}|
-| /email | POST | ***if successful | **an array of emails
-{“username”:”lucas”,
-“emails”: 
-[ ‘lucas@gmail’,
-   ‘lee@gmail’ ]
-}|
+| Endpoint  | Method | Response                                                                                                                                                                                                                                                                                             | Expected                                                                                              |
+|-----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| '/signin' | GET    | **Array of single user where user login matched user in database[{,"id": 1,,"username": "Lee",,"email": "lee@gmail.com",,"password": "pass",,"createdAt": "2016-08-28T18:12:15.031Z",,"updatedAt": "2016-08-28T18:12:15.031Z",}]                                                                     | {“username”:”lee”,“password”:”MKS”}                                                                   |
+| '/signup' | POST   | ***If Successful                                                                                                                                                                                                                                                                                     | {,"username": "Lee",,"email": "lee@gmail.com",,"password": "pass",}                                   |
+| '/goals'  | GET    | ***An array of all goals belonging to a user[,{,"id": 1,,"description": "to be the best lucas EVER",,"deadline": "2020-01-12T08:00:00.000Z",,"hasExpired": false,,"hasCompleted": false,,"createdAt": "2016-08-30T18:48:17.491Z",,"updatedAt": "2016-08-30T18:48:17.491Z",,"UserId": 1,}...{}....{}] | **an array of goals {,"username": "Lee",}                                                             |
+| '/goals'  | POST   | ***If Successful                                                                                                                                                                                                                                                                                     | {“username”:”lucas”,“description”:”lose 5 lbs”,“deadline”: “September 20, 2016 17:58:00”}             |
+| '/goals'  | PUT    | ***If Successful                                                                                                                                                                                                                                                                                     | ***get the goal ID from the field ID in the goals JSON object returned in the GET request{,goalId:1;} |
+| '/email'  | POST   | ***If Successful                                                                                                                                                                                                                                                                                     | **an array of emails{“username”:”lucas”,“emails”: [ ‘lucas@gmail’,,‘lee@gmail’ ]}                     |
 
 
