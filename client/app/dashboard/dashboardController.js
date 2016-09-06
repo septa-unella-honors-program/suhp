@@ -19,11 +19,10 @@ angular.module('suhp.dashboard', ['ngStorage'])
 
   //will render list of user goals upon initialization
   vm.initializeGoals = function() {
-    //need to inject user factory
     Dashboard.getUserGoals(username)
     .then(function(goals){
       goals.forEach(function(goal){
-        //console.log("deadline "+ new Date(goal.deadline) );
+        //format each goal text to be more user friendly
         goal.deadline=((new Date(goal.deadline))+'').slice(0,25);
       });
       vm.data.goals = goals;
@@ -32,28 +31,22 @@ angular.module('suhp.dashboard', ['ngStorage'])
       vm.storedGoals = $localStorage.goals;
     })
     .catch(function(error){
-      console.error(error)
-    })
-  }
+      console.error(error);
+    });
+  };
   vm.initializeGoals();
 
-  vm.goalCompletion = function(goalId){
-    Dashboard.updateCompletion(goalId)
-  };
+  
 
   //attached to ng-submit
 
   vm.addGoal = function(){
-    console.log("adding goal");
-    console.log(vm.goal);
-    console.log(vm.goal.deadline);
+    //check to see if the deadline was passed properly, then post to DB
     if(vm.goal.deadline){
       Dashboard.storeUserGoals(vm.goal)
       .then(function(goalId){
-        console.log("DB goal ID");
-        console.log(goalId);
+        //the response of a successful post is the new goal's ID in the DB
         vm.goal.id=goalId.data;
-
         var newGoal={
           id:goalId.data,
           description:vm.goal.description,
@@ -61,35 +54,30 @@ angular.module('suhp.dashboard', ['ngStorage'])
           hasExpired:false,
           hasCompleted:false
         };
-        console.log('newGoal', newGoal);
+        //add this newly created goal to the UI
         vm.data.goals.push(newGoal);
         //reinitialize local storage to store new goal
         $localStorage.goals = vm.data.goals;
         vm.initializeGoals();
       })
       .catch(function(err){
-        console.log("error posting goal");
+        console.log("error posting goal", err);
       });
       
     }
-  }
+  };
 
+//a function to send a PUT request to the database to update the goals
   vm.goalCompletion = function(goal){
-    console.log("updating goal completion")
-    console.log(goal.id);
     goal.hasCompleted=true;
     Dashboard.updateCompletion(goal.id);
   };
 
   vm.signOut = function() {
-
     $localStorage.$reset({
       token: null
     });
-
     User.currentUser = null;
     $location.path('/signin');
   };
-
-
-})
+});
