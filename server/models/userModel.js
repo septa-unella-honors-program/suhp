@@ -23,9 +23,9 @@ module.exports= {
 
                 //compare password with has in db
                 if(bcrypt.compareSync(req.query.password, user.password_hash)) {
+                    
                     //creating JSON web token to vlidate user. First param is user, 2nd 
-                    //is the secrte(from server_config.js file, expires in 24 hrs)
-
+                    //is the secret(from server_config.js file)
                     var token = jwt.sign({user: user}, config.secret, {
                         expiresIn: '24h' // expires in 24 hours
                     });
@@ -37,7 +37,7 @@ module.exports= {
                         token: token
                     });          
                 } else {
-                    res.status(403).json({message: 'Incorrect password'});
+                    res.status(401).json({message: 'Incorrect password'});
                 }
 
             }

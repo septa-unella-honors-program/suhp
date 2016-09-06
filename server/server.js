@@ -4,6 +4,9 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var router =require('./config/routes');
+//JSON Web tokens
+var expressJWT = require('express-jwt');
+var config = require('./config/server_config');
 
 //create db
 var db = require('./db/db_config.js');
@@ -21,6 +24,8 @@ app.use(bodyParser.json({extended:false}));
 app.use(express.static('client'));
 app.use(morgan('dev'));
 
+//Middleware to verify if user has JSON web token to access the user dashboard
+// app.use(expressJWT({ secret: config.secret}).unless({ path: ['signin', 'signup', 'email']}));
 
 // All incoming requests are sent to the routers located in the config/routes.js file
 app.use('/', router);
