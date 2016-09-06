@@ -1,8 +1,8 @@
+<h6>You are signed in as {{ctrl.goal.username}}</h6>
+<div class="jumbotron">
+  <h1 class="userdash-header">Septa Unella's Honor Program</h1>
+</div>
  <div class="container">
-    <h6>You are signed in as {{ctrl.goal.username}}</h6>
-    <div class="jumbotron">
-     <h1 class="userdash-header">Septa Unella's Honor Program</h1>
-   </div>
      <div></div>
        <form class="goals-input" >
          <input id ="description" required type="text" ng-model="ctrl.goal.description" value="" placeholder="My goal is to...">
@@ -14,6 +14,6 @@
          <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
 
          <button class="fetchedButton btn btn-info" type="button" name="button" ng-click="ctrl.goalCompletion(goal.id)">Verify Goal Completion</button>
-         
+
        </div>
   </div>

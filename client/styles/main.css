@@ -24,8 +24,13 @@
 
 .jumbotron {
   position: relative;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
   background: #000 url("https://brobible.files.wordpress.com/2016/06/septa-unella.jpg?quality=90&w=550") ;
   background-size: cover;
+  width: 550px;
+  height: 366px;
   color: #F3D3BD
 }
 .userdash-header {
