@@ -2,6 +2,7 @@
 
 angular.module('suhp.services', ['ngStorage'])
 
+//user factory to keep track of user
 .factory('User', function(){
   var currentUser=null;
   return{
@@ -48,7 +49,7 @@ angular.module('suhp.services', ['ngStorage'])
   };
 
   var signin = function(userobj){
-    
+
     return $http({
       method: 'GET',
       url: '/signin',
@@ -59,7 +60,7 @@ angular.module('suhp.services', ['ngStorage'])
       $localStorage.user = response.data.user;
       if(response.status == 200){
           return response;
-        } 
+        }
     }).catch(function(error){
       console.error('+++line 52 services.js: There was a problem in services/sign in function');
     });
@@ -81,8 +82,9 @@ angular.module('suhp.services', ['ngStorage'])
 
 
 
-//factory function for user dashboard, will handle post requests for
+//factory function for user dashboard
 .factory('Dashboard', function($http){
+  //retrieves usergoals from database based on username
   var getUserGoals = function(username){
     return $http({
       method: 'GET',
@@ -95,10 +97,10 @@ angular.module('suhp.services', ['ngStorage'])
       return response.data
     })
     .catch(function(error){
-      console.error('+++line79 services.js: There was an error retrieving your data')
     });
   };
 
+  //posts usergoals to db
   var storeUserGoals = function(userGoal){
       return $http({
         method: 'POST',
@@ -107,9 +109,8 @@ angular.module('suhp.services', ['ngStorage'])
       });
   };
 
-
+  //updates completion status in db
   var updateCompletion = function(params) {
-    console.log(" in update completion in Factory" +params);
     return $http({
       method: 'PUT',
       url: '/goals',
@@ -132,4 +133,4 @@ angular.module('suhp.services', ['ngStorage'])
   }
 
 
-}); //for line 5
+}); 
