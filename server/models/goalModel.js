@@ -146,7 +146,7 @@ module.exports={
 
                     goalCronJobDB[goalId].goalJobShame=goalJobShame;
 
-                    res.json(goalCronJobDB);
+                    res.json(goalId);
 
                     
                     
