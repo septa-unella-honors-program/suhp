@@ -6,7 +6,7 @@ angular.module('suhp.dashboard', [])
 
   var vm = this;
   // var username = User.currentUser;
-  var username = "jim";
+  var username = User.currentUser;
   vm.data = {};
   vm.goal = {};
   vm.goal.username = username;
@@ -50,10 +50,11 @@ angular.module('suhp.dashboard', [])
     }
   }
 
-  vm.goalCompletion = function(goalId){
+  vm.goalCompletion = function(goal){
     console.log("updating goal completion")
-    console.log(goalId);
-    Dashboard.updateCompletion(goalId)
+    console.log(goal.id);
+    goal.hasCompleted=true;
+    Dashboard.updateCompletion(goal.id);
   };
 
 
