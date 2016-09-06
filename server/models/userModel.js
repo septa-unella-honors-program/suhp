@@ -66,7 +66,7 @@ module.exports= {
                 res.status(200).json({
                     user: user.username,
                     success: true, 
-                    message: "Sucessfully logged in",
+                    msg: "Sucessfully logged in",
                     token: token
                 });  
         })

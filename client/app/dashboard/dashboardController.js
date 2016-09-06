@@ -8,6 +8,7 @@ angular.module('suhp.dashboard', ['ngStorage'])
   // var username = User.currentUser;
   var username = User.currentUser;
   vm.data = {};
+  vm.data.goals =[];
   vm.goal = {};
   //If goals exist in local storage, set to goals. Else, set to null
   vm.storedGoals = $localStorage.goals || null;
@@ -59,7 +60,7 @@ angular.module('suhp.dashboard', ['ngStorage'])
           hasExpired:false,
           hasCompleted:false
         };
-
+        console.log('newGoal', newGoal);
         vm.data.goals.push(newGoal);
         //reinitialize local storage to store new goal
         $localStorage.goals = vm.data.goals;
