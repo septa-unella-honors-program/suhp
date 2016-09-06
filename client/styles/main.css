@@ -1,6 +1,7 @@
-.container {
-  /*background-color: #333333*/
+body {
+  background-color: #333333;
 }
+
 .goalsList {
   margin-top: 20px;
   width: 85%;
@@ -10,9 +11,6 @@
   border-color: #5E5E5E
 }
 
-.goals-input{
-
-}
 .goals-input, .goalsList{
   font-family: 'Playfair Display', serif;
 }
@@ -22,12 +20,77 @@
   margin: 4px;
 }
 
-.jumbotron {
+#signinJumbo {
+  margin-top: 40px;
+  margin-bottom: 50px;
+  margin-right: 30px;
+  margin-left: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 50px;
+  color: #FCFAF9;
+  height: 220px;
+  background-color: #8B575C;
+  text-align: center;
+}
+
+#signupJumbo {
+  background-image: url("http://cos.h-cdn.co/assets/16/23/1600x1064/gallery-1465569666-2926de0760061e3ba92b7439036afb3250fe48af5bea3e1f6e3009190a583c61a7988523c888169590ffe355fdb0e98d.jpg");
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-right: 30px;
+  margin-left: 30px;
+  font-family: 'Cinzel', serif;
+  height: 500px;
+  color: #5E5E5E;
+  width: auto;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #F3D3BD, 0 0 25px #F3D3BD, 0 0 5px #F3D3BD;
+}
+
+.signinEmpty {
+  margin-bottom: 40px;
+}
+
+#signuplink{
+  color:#FCFAF9;
+}
+
+.signinform {
+  margin: 0 auto;
+  background-color: #5E5E5E;
+  text-align: center;
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  border-radius: 6px;
+  font-family: 'Cinzel', serif;
+  color: #FCFAF9;
+  font-size: 30px;
+}
+
+.authinput {
+  outline: none;
+  color: #8B575C
+}
+
+.signinbutton {
+  color: #FCFAF9;
+  background-color: #8B575C;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.jumbotron .dashboardjumbo {
   position: relative;
   background: #000 url("https://brobible.files.wordpress.com/2016/06/septa-unella.jpg?quality=90&w=550") ;
   background-size: cover;
   color: #F3D3BD
 }
+
+
 .userdash-header {
   text-align: center;
   font-size: 75px;
@@ -52,25 +115,6 @@ nav {
   padding-bottom: 15px;
 }
 
-
-.jumbotron {
-  background-color: pink;
-  background-position: center;
-  background-size: contain;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.signinform {
-  margin: 0 auto;
-  background-color: grey;
-  text-align: center;
-  width: 250px;
-  padding-top: 50px;
-  padding-bottom: 30px
-
-}
-
 .signup {
   margin: 0 auto;
   text-align: center;
@@ -79,6 +123,10 @@ nav {
 .friendlist {
   margin: 0 auto;
   text-align: center;
+}
+
+.signinPunish {
+  color: #333333;
 }
 
 

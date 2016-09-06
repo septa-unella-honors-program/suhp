@@ -1,10 +1,13 @@
 <div ng-controller="AuthController" as ctrl>
 
-  <div class="container">
+  <div class="container-fluid" id= "signinBackground">
 
-    <div class="row jumbotron">
+    <div class= "row">
       <div class="col-md-12">
-        <h1 class= "signinTitle">Septa Unella Honors Program</h1>
+        <div class="row jumbotron" id= "signinJumbo">
+          <h1>Sign In to Avoid Shame</h1>
+          <h3>Septa-Unella Honors Program<h3>
+        </div>
       </div>
     </div>
 
@@ -13,21 +16,27 @@
       <div class="col-md-12">
         <form name=signin ng-submit="ctrl.signin()">
           Username:
-          <input type="text" ng-model="ctrl.user.username" required placeholder="Enter username">
+          <input class = "authinput" type="text" ng-model="ctrl.user.username" required placeholder="Enter username">
           <div ng-if="ctrl.showSigninError()">
             <br>
             Sign in failed. Please try again
           </div>
           <br><br>
           Password:
-          <input type="password" ng-model="ctrl.user.password" required placeholder="Enter password">
+          <input class = "authinput" type="password" ng-model="ctrl.user.password" required placeholder="Enter password">
           <br><br>
-          <input class="btn btn-info" value="Sign In" type="submit">
+          <input class="signinbutton" value="Sign In" type="submit">
         </form>
-        <a ng-href ="#/signup">Still not a member? Click here to sign up.</a>
+        <a id="signuplink" ng-href ="#/signup">Sign Up to Avoid Shame</a>
       </div>
       <p class="error">{{ctrl.errorMsg}}</p>
     </div>
 
+    <div class = "row signinEmpty">
+      <div class ="col-md-12"></div>
+    </div>
+
   </div>
+
+
 </div>
