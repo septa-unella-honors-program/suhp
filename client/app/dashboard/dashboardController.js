@@ -8,8 +8,7 @@ angular.module('suhp.dashboard', [])
   var username = User.currentUser;
   vm.data = {};
   vm.goal = {};
-  vm.goal.user = username;
-
+  vm.goal.username = username;
 
   //will render list of user goals upon initialization
   vm.initializeGoals = function() {
