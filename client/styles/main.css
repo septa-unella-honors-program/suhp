@@ -4,15 +4,22 @@
 .goalsList {
   margin-top: 20px;
   width: 85%;
-  color: #333333
+  color: #333333;
+  border-top: solid;
+  border-width: thin;
+  border-color: #5E5E5E
 }
 
+.goals-input{
+
+}
 .goals-input, .goalsList{
   font-family: 'Playfair Display', serif;
 }
 .fetchedButton {
   background-color: #8B575C;
-  color: white
+  color: white;
+  margin: 4px;
 }
 
 .jumbotron {
