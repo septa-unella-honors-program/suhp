@@ -53,11 +53,24 @@ body {
   margin-bottom: 40px;
 }
 
-#signuplink{
+.signLink{
   color:#FCFAF9;
 }
 
 .signinform {
+  margin: 0 auto;
+  background-color: #5E5E5E;
+  text-align: center;
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  border-radius: 6px;
+  font-family: 'Cinzel', serif;
+  color: #FCFAF9;
+  font-size: 30px;
+}
+
+.signupForm {
   margin: 0 auto;
   background-color: #5E5E5E;
   text-align: center;
@@ -76,7 +89,11 @@ body {
   text-align: center;
 }
 
-.signinbutton {
+#signupSign {
+  font-size: 45px;
+}
+
+.signButton {
   color: #FCFAF9;
   background-color: #8B575C;
   border: none;
@@ -133,6 +150,10 @@ nav {
   font-family: 'Cinzel', serif;
 }
 
+.friendTitle {
+  font-size: 35px;
+  color: #333333;
+}
 
 .fetchedGoalDescription, .fetchedGoalDeadline, .fetchedButton {
   display: inline-block;
