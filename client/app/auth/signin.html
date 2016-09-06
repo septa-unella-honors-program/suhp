@@ -17,10 +17,10 @@
         <form name=signin ng-submit="ctrl.signin()">
           Username:
           <input class = "authinput" type="text" ng-model="ctrl.user.username" required placeholder="Enter username">
-          <div ng-if="ctrl.showSigninError()">
+          <!-- <div ng-if="ctrl.showSigninError()">
             <br>
             Sign in failed. Please try again
-          </div>
+          </div> -->
           <br><br>
           Password:
           <input class = "authinput" type="password" ng-model="ctrl.user.password" required placeholder="Enter password">
@@ -29,7 +29,7 @@
         </form>
         <a id="signuplink" ng-href ="#/signup">Sign Up to Avoid Shame</a>
       </div>
-      <p class="error">{{ctrl.errorMsg}}</p>
+      <p class="signinError">{{ctrl.errorMsg}}</p>
     </div>
 
     <div class = "row signinEmpty">
