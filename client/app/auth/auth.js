@@ -40,6 +40,7 @@ angular.module('suhp.auth', [])
   vm.storeFriendEmailList = function(){
     Auth.storeFriendEmailList(vm.user.username, vm.user.emails)
     .then(function(response){
+      console.log('response', response);
       $location.path('/goal');
     })
     .catch(function(error){

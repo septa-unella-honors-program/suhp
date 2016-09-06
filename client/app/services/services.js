@@ -39,6 +39,7 @@ angular.module('suhp.services', ['ngStorage'])
       }
     })
     .then(function(response){
+      $localStorage.user = userName;
       return response.data;
     })
     .catch(function(error){
