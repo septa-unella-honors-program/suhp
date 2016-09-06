@@ -1,10 +1,18 @@
+.container {
+  /*background-color: #333333*/
+}
 .goalsList {
   margin-top: 20px;
-  width: 85%
+  width: 85%;
+  color: #333333
 }
 
 .goals-input, .goalsList{
   font-family: 'Playfair Display', serif;
+}
+.fetchedButton {
+  background-color: #8B575C;
+  color: white
 }
 
 .jumbotron {
