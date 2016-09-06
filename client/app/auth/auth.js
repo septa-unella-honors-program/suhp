@@ -5,7 +5,6 @@ angular.module('suhp.auth', [])
   var vm = this;
   vm.user = {};
   vm.user.emails =[];
-  vm.userFound = Auth.userFound;
   vm.usernameTaken;
   vm.hideSignup = false;
   vm.showFriendForm = false;
@@ -56,7 +55,7 @@ angular.module('suhp.auth', [])
 
         if(response){          
           User.currentUser = vm.user.username;
-          console.log('vm user', vm.user);
+          console.log('vm user', response.data);
           console.log('currentUser', User.currentUser);
           $location.path('/goal');
         } else {

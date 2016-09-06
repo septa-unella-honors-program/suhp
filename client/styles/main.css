@@ -98,3 +98,11 @@ nav {
 .fetchedButton{
   float:right;
 }
+
+.right {
+  float:right;
+}
+
+.bold {
+  font-weight: bold;
+}
