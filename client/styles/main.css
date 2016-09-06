@@ -1,6 +1,11 @@
-body {
+
+.signBackground {
   background-color: #333333;
-  color: #F3D3BD;
+  margin-top: 0;
+  margin-bottom: -20px;
+  border: 0;
+  margin-left:-20px;
+  margin-right:-20px;
 }
 
 .goalsList {
@@ -102,7 +107,7 @@ body {
   outline: none;
 }
 
-.jumbotron .dashboardjumbo {
+.dashboardjumbo {
   position: relative;
   margin-left: 25%;
   margin-right: 25%;
