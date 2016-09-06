@@ -5,7 +5,6 @@ angular.module('suhp.auth', [])
   var vm = this;
   vm.user = {};
   vm.user.emails =[];
-  vm.userFound = Auth.userFound;
   vm.usernameTaken;
   vm.hideSignup = false;
   vm.showFriendForm = false;

@@ -1,7 +1,7 @@
-angular.module('suhp.dashboard', [])
+angular.module('suhp.dashboard', ['ngStorage'])
 
 
-.controller("DashController", function (Dashboard, User, $location){
+.controller("DashController", function (Dashboard, User, $location, $localStorage){
   console.log("dash controller start");
 
   var vm = this;
@@ -9,7 +9,7 @@ angular.module('suhp.dashboard', [])
   var username = User.currentUser;
   vm.data = {};
   vm.goal = {};
-  vm.goal.username = username;
+  vm.goal.username = $localStorage.user;
 
   //will render list of user goals upon initialization
   vm.initializeGoals = function() {
@@ -58,6 +58,11 @@ angular.module('suhp.dashboard', [])
   };
 
   vm.signOut = function() {
+
+    $localStorage.$reset({
+      token: null
+    });
+
     User.currentUser = null;
     $location.path('/signin');
   };
