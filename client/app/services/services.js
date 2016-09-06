@@ -1,6 +1,6 @@
 //contains all client-side services for signup, signin, and dashboard
 
-angular.module('suhp.services', [])
+angular.module('suhp.services', ['ngStorage'])
 
 .factory('User', function(){
   var currentUser=null;
@@ -10,7 +10,7 @@ angular.module('suhp.services', [])
 
 })
 
-.factory('Auth', function($http){
+.factory('Auth', function($http, $localStorage){
   //factory to post username to database upon signup
   var signup = function(user){
     console.log('user', user);
@@ -20,8 +20,7 @@ angular.module('suhp.services', [])
       data: user
     })
     .then(function(response){
-      console.log('success', response.query);
-      
+      $localStorage.token = response.data.token;
       return response.data;
     })
     .catch(function(error){
@@ -56,7 +55,7 @@ angular.module('suhp.services', [])
       url: '/signin',
       params: userobj
     }).then(function(response){
-
+      $localStorage.token = response.data.token;
       if(response.status == 200){
           return response;
         } 

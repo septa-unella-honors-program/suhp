@@ -1,7 +1,7 @@
 angular.module('suhp.dashboard', [])
 
 
-.controller("DashController", function (Dashboard, User){
+.controller("DashController", function (Dashboard, User, $location){
   console.log("dash controller start");
 
   var vm = this;
@@ -55,6 +55,11 @@ angular.module('suhp.dashboard', [])
     console.log(goal.id);
     goal.hasCompleted=true;
     Dashboard.updateCompletion(goal.id);
+  };
+
+  vm.signOut = function() {
+    User.currentUser = null;
+    $location.path('/signin');
   };
 
 

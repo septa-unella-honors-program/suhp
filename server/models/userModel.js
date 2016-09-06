@@ -57,7 +57,17 @@ module.exports= {
      	 email:req.body.email,
          password: req.body.password})
         .then(function(user) {
-          res.sendStatus(200);  
+
+         var token = jwt.sign({user: user}, config.secret, {
+                    expiresIn: '24h' // expires in 24 hours
+                });
+                
+                res.status(200).json({
+                    user: user.username,
+                    success: true, 
+                    message: "Sucessfully logged in",
+                    token: token
+                });  
         })
         .catch(function(err) {
             res.send(err);
