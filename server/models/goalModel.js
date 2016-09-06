@@ -6,69 +6,72 @@ var mailGun = require('../config/mailgun.js');
 var goalCronJobDB={};
 
 console.log("JUST AFTER CRON JOB DATABASE CREATION");
+/* The following block of code finds all goals that are currently not expired and not completed and creates a cron job for each that executes at the specified deadline and send out the appropriate email blast*/
 
-// db.Goal.findAll({where:{
-//     hasExpired:false,
-//     hasCompleted:false
-// }})
-// .then(function(goals){
-//     //console.log(goals);
+db.Goal.findAll({where:{
+    hasExpired:false,
+    hasCompleted:false
+}})
+.then(function(goals){
+    //console.log(goals);
     
-//     goals.forEach(function(goal){
-//         var req={body:{}};
-//         db.User.findAll({where:{id:goal.get('UserId')}})
-//         .spread(function(user){
-//             //console.log('USERNAME: '+user.get('username'));
-//             req.body.username=user.get('username');
-//             req.body.description=goal.get('description');
-//             // console.log(req);
-//             db.Email.findAll({ where: { 
-//                 UserId: user.get('id')
-//                 }})
-//                 .then(function(emails){
-//                     var userEmailList=emails.map(function(email){
-//                         return email.get('email');
-//                     });
 
-//                     goalCronJobDB[goal.get('id')]={};
+    goals.forEach(function(goal){
+        var req={body:{}};
+        db.User.findOne({where:{id:goal.get('UserId')}})
+        .then(function(user){
+            //console.log('USERNAME: '+user.get('username'));
+            req.body.username=user.get('username');
+            req.body.description=goal.get('description');
+            // console.log(req);
+            db.Email.findAll({ where: { 
+                UserId: user.get('id')
+                }})
+                .then(function(emails){
+                    var userEmailList=emails.map(function(email){
+                        return email.get('email');
+                    });
 
-//                     console.log("**********");
-//                     console.log("goal deadline at "+goal.get('deadline') );
-//                     var shameDeadline = new Date( goal.get('deadline'));
-//                     console.log( "shameDeadline "+shameDeadline);
-//                     var reminderDeadline= new Date(goal.get('deadline'));
-//                     reminderDeadline.setDate(reminderDeadline.getDate()-2);
-//                     console.log( "reminderDeadline "+reminderDeadline);
+                    goalCronJobDB[goal.get('id')]={};
+
+                    console.log("**********");
+                    console.log("goal deadline at "+goal.get('deadline') );
+                    var shameDeadline = new Date( goal.get('deadline'));
+                    console.log( "shameDeadline "+shameDeadline);
+                    var reminderDeadline= new Date(goal.get('deadline'));
+                    reminderDeadline.setDate(reminderDeadline.getDate()-2);
+                    console.log( "reminderDeadline "+reminderDeadline);
                     
-//                     var goalJobDeadline= schedule.scheduleJob(reminderDeadline, function(){
-//                         console.log("reminderDeadline email sent");
-//                         mailGun.sendReminderEmails(userEmailList,req);
-//                     });
-//                     goalCronJobDB[goal.get('id')].goalJobDeadline=goalJobDeadline;
+                    var goalJobDeadline= schedule.scheduleJob(reminderDeadline, function(){
+                        console.log("reminderDeadline email sent");
+                        mailGun.sendReminderEmails(userEmailList,req);
+                    });
+                    goalCronJobDB[goal.get('id')].goalJobDeadline=goalJobDeadline;
 
-//                     var goalJobShame=schedule.scheduleJob(shameDeadline, function(){
-//                         console.log("shame email sent");
-//                         mailGun.sendShameEmails(userEmailList,req);
-//                         console.log('shameDeadline GOALLLLL'+JSON.stringify(goal));
-//                         goal.update({
-//                             hasExpired:true
-//                         });
+                    var goalJobShame=schedule.scheduleJob(shameDeadline, function(){
+                        console.log("shame email sent");
+                        mailGun.sendShameEmails(userEmailList,req);
+                        console.log('shameDeadline GOALLLLL'+JSON.stringify(goal));
+                        goal.update({
+                            hasExpired:true
+                        });
 
-//                     });
+                    });
 
-//                     goalCronJobDB[goal.get('id')].goalJobShame=goalJobShame;
-//                     console.log("**********");
-//             });
-//         });
+                    goalCronJobDB[goal.get('id')].goalJobShame=goalJobShame;
+                    console.log("**********");
+            });
+        });
 
-//     });
-// });
+    });
+});
 
 module.exports={
+    /* finds goals based on a specific userId and returns an array of goal objects*/
 	get:function(req, res){
         console.log(req.query);
-        db.User.findOrCreate({where:{username: req.query.username}})
-        .spread(function(user){
+        db.User.findOne({where:{username: req.query.username}})
+        .then(function(user){
             db.Goal.findAll({where: {
             UserId:user.get('id')
             }})
@@ -83,10 +86,11 @@ module.exports={
         // res.send("JUST A TEST");
 	},
 	post:function(req,res){
+        /*Posts a goal with the associated userId and then subsequnetly creates cron jobs to execute on the specified deadline*/
         var userId;
         var goalId;
-        db.User.findOrCreate({where:{username: req.body.username}})
-        .spread(function(user){
+        db.User.findOne({where:{username: req.body.username}})
+        .then(function(user){
             console.log("USER ID of "+req.body.username+"  "+user.get('id'));
             userId=user.get('id');
             db.Goal.findOrCreate({where: 
@@ -156,9 +160,9 @@ module.exports={
             }); 
 	},
     put:function(req,res){
-
-        db.Goal.findOrCreate({where:{id:req.query.goalId}})
-        .spread(function(goal){
+        //The exclusive purpose of this put function is to cancel the cron jobs associated with certain goals. When a goal is verified, the user sends a put requests with the specific goal in order to cancel the scheduled email blasts
+        db.Goal.findOne({where:{id:req.query.goalId}})
+        .then(function(goal){
 
             //console.log(goal);
             // console.log(goalCronJobDB);
