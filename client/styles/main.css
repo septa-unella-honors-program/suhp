@@ -1,6 +1,11 @@
-body {
+
+.signBackground {
   background-color: #333333;
-  color: #F3D3BD;
+  margin-top: 0;
+  margin-bottom: -20px;
+  border: 0;
+  margin-left:-20px;
+  margin-right:-20px;
 }
 
 .goalsList {
@@ -102,10 +107,12 @@ body {
   outline: none;
 }
 
-.jumbotron .dashboardjumbo {
+.dashboardjumbo {
   position: relative;
+  text-align: center;
+  margin-top: 15px;
   background: #000 url("https://brobible.files.wordpress.com/2016/06/septa-unella.jpg?quality=90&w=550") ;
-  background-size: cover;
+  background-size: contain;
   color: #F3D3BD
 }
 
