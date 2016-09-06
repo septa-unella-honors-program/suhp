@@ -1,14 +1,39 @@
-*{
-  border:1px solid black;
+.container {
+  /*background-color: #333333*/
+}
+.goalsList {
+  margin-top: 20px;
+  width: 85%;
+  color: #333333;
+  border-top: solid;
+  border-width: thin;
+  border-color: #5E5E5E
 }
 
-#goalstable {
-  border: solid;
-  color: green
+.goals-input{
+
+}
+.goals-input, .goalsList{
+  font-family: 'Playfair Display', serif;
+}
+.fetchedButton {
+  background-color: #8B575C;
+  color: white;
+  margin: 4px;
 }
 
+.jumbotron {
+  position: relative;
+  background: #000 url("https://brobible.files.wordpress.com/2016/06/septa-unella.jpg?quality=90&w=550") ;
+  background-size: cover;
+  color: #F3D3BD
+}
 .userdash-header {
   text-align: center;
+  font-size: 75px;
+  font-family: 'Cinzel', serif;
+  background: transparent;
+  color: white;
 }
 
 nav {
