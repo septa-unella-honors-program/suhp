@@ -2,8 +2,8 @@ angular.module('suhp.dashboard', ['ngStorage'])
 
 
 .controller("DashController", function (Dashboard, User, $location, $localStorage){
-  console.log("dash controller start");
 
+  //vm/this is angular 1.5 convention. replaces $scope obj
   var vm = this;
   var username = User.currentUser;
   vm.data = {};
