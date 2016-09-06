@@ -23,6 +23,7 @@ module.exports= {
 
                 //compare password with has in db
                 if(bcrypt.compareSync(req.query.password, user.password_hash)) {
+
                     
                     //creating JSON web token to vlidate user. First param is user, 2nd 
                     //is the secret(from server_config.js file)

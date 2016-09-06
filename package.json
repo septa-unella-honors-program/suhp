@@ -7,8 +7,6 @@
     "node": "6.4.0",
     "npm": "3.10.3"
   },
-
-},
   "scripts": {
     "postinstall": "bower install",
     "start": "node server/server.js"
