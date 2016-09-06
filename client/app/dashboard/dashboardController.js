@@ -9,6 +9,10 @@ angular.module('suhp.dashboard', ['ngStorage'])
   var username = User.currentUser;
   vm.data = {};
   vm.goal = {};
+  //If goals exist in local storage, set to goals. Else, set to null
+  vm.storedGoals = $localStorage.goals || null;
+
+  //Username is saved to localStorage to persist data
   vm.goal.username = $localStorage.user;
 
   //will render list of user goals upon initialization
@@ -17,6 +21,9 @@ angular.module('suhp.dashboard', ['ngStorage'])
     Dashboard.getUserGoals(username)
     .then(function(goals){
       vm.data.goals = goals;
+      //Set local storage goals to array of goals
+      $localStorage.goals = vm.data.goals;
+      vm.storedGoals = $localStorage.goals;
     })
     .catch(function(error){
       console.error(error)
@@ -27,7 +34,6 @@ angular.module('suhp.dashboard', ['ngStorage'])
   vm.goalCompletion = function(goalId){
     Dashboard.updateCompletion(goalId)
   };
-
 
   //attached to ng-submit
 
@@ -42,6 +48,8 @@ angular.module('suhp.dashboard', ['ngStorage'])
         console.log(goalId);
         vm.goal.id=goalId.data;
         vm.data.goals.push(vm.goal);
+        //reinitialize local storage to store new goal
+        $localStorage.goals = vm.data.goals;
       })
       .catch(function(err){
         console.log("error posting goal");
