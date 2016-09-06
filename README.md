@@ -33,4 +33,14 @@ Backend Routes
 | '/goals'  | PUT    | ***If Successful                                                                                                                                                                                                                                                                                     | ***get the goal ID from the field ID in the goals JSON object returned in the GET request{,goalId:1;} |
 | '/email'  | POST   | ***If Successful                                                                                                                                                                                                                                                                                     | **an array of emails{“username”:”lucas”,“emails”: [ ‘lucas@gmail’,,‘lee@gmail’ ]}                     |
 
+Tech Stack
+---------
+Angular 1.5
+Node.js
+Express.js
+PostgreSQL
+Sequelize
 
+######Authors
+
+Lee Mordell, Vivian Sze, Lucas Fisher, Lauren Settle
