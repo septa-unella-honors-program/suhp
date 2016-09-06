@@ -1,6 +1,7 @@
 var db = require('../db/db_config.js');
-var gif = require('../config/giphy.js');
 var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var config = require('../config/server_config');
 
 module.exports= {
 
@@ -9,7 +10,7 @@ module.exports= {
     using the bcrypt validation method 'compareSync'*/
 
 	get:function(req,res){
-        console.log('req', req);
+
         db.User.findOne({where: {
         username: req.query.username
         }})
@@ -22,9 +23,21 @@ module.exports= {
 
                 //compare password with has in db
                 if(bcrypt.compareSync(req.query.password, user.password_hash)) {
-                    res.status(200).send(user);            
+                    //creating JSON web token to vlidate user. First param is user, 2nd 
+                    //is the secrte(from server_config.js file, expires in 24 hrs)
+
+                    var token = jwt.sign({user: user}, config.secret, {
+                        expiresIn: '24h' // expires in 24 hours
+                    });
+                    
+                    res.status(200).json({
+                        user: user.username,
+                        success: true, 
+                        message: "Sucessfully logged in",
+                        token: token
+                    });          
                 } else {
-                    res.status(403).send('Incorrect password');
+                    res.status(403).json({message: 'Incorrect password'});
                 }
 
             }
