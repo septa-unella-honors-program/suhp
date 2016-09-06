@@ -1,4 +1,4 @@
- <div class="container">
+<div class="container">
   <div class="nav>"
     <h6>You are signed in as <span class="bold"> {{ctrl.goal.username}} </span></h6>
     <button ng-click="ctrl.signOut()" class="btn btn-info right" ="button">Sign Out</button>
@@ -15,6 +15,6 @@
        <div class="goalsList" ng-repeat="goal in ctrl.storedGoals" ng-if="!goal.hasCompleted && !goal.hasExpired">
          <div class="fetchedGoalDescription">{{goal.description}}</div>
          <div class="fetchedGoalDeadline">{{goal.deadline}}</div>
-         <button class="fetchedButton" type="button" name="button" ng-click="ctrl.goalCompletion(goal)">Verify Goal Completion</button>
+         <button class="fetchedButton btn btn-info" type="button" name="button" ng-click="ctrl.goalCompletion(goal.id)">Verify Goal Completion</button>
        </div>
   </div>
