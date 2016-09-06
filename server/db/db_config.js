@@ -12,49 +12,49 @@ var bcrypt = require('bcrypt');
 
 // Checks if the database has been loaded - appears in the console
 db.authenticate()
-	.then(function(err) {
-		console.log('Successful Connection to the database');
-	})
-	.catch(function(err) {
-		console.log('Cannot connect to the database', err);
-	});
+    .then(function(err) {
+        console.log('Successful Connection to the database');
+    })
+    .catch(function(err) {
+        console.log('Cannot connect to the database', err);
+    });
 
 var User = db.define('User', {
-	username: {
-		type: Sequelize.STRING,
-		unique: true
-	},
-	salt: {
-		type: Sequelize.STRING
-	},
-	email: Sequelize.STRING,
-  	password_hash: Sequelize.STRING,
+    username: {
+        type: Sequelize.STRING,
+        unique: true
+    },
+    salt: {
+        type: Sequelize.STRING
+    },
+    email: Sequelize.STRING,
+    password_hash: Sequelize.STRING,
 
-  	/*Password hashing and storage is done here. The 'salt' and 'hash' vars
-  	below use bcrypt for encryption and this.setDataValue sets the values to
-  	their collumn in the DB*/
-  	password: {
-  		type: Sequelize.VIRTUAL,
-  		set: function(val) {
-  			let salt = bcrypt.genSaltSync(10);
-  			let hash = bcrypt.hashSync(val, salt);
+    /*Password hashing and storage is done here. The 'salt' and 'hash' vars
+    below use bcrypt for encryption and this.setDataValue sets the values to
+    their collumn in the DB*/
+    password: {
+        type: Sequelize.VIRTUAL,
+        set: function(val) {
+            let salt = bcrypt.genSaltSync(10);
+            let hash = bcrypt.hashSync(val, salt);
 
-  			this.setDataValue('password', val);
-  			this.setDataValue('password_hash', hash);
-  			this.setDataValue('salt', salt);
-  		}
-	}
+            this.setDataValue('password', val);
+            this.setDataValue('password_hash', hash);
+            this.setDataValue('salt', salt);
+        }
+    }
 });
 
 var Goal = db.define('Goal', {
-	description: Sequelize.STRING,
-	deadline: Sequelize.DATE,
-  	hasExpired: Sequelize.BOOLEAN,
-  	hasCompleted: Sequelize.BOOLEAN
+    description: Sequelize.STRING,
+    deadline: Sequelize.DATE,
+    hasExpired: Sequelize.BOOLEAN,
+    hasCompleted: Sequelize.BOOLEAN
 });
 
 var Email = db.define('Email', {
-	email: Sequelize.STRING,
+    email: Sequelize.STRING,
 });
 
 Goal.belongsTo(User);

@@ -82,7 +82,7 @@ angular.module('suhp.dashboard', ['ngStorage'])
   };
 
   vm.signOut = function() {
-
+    //Resets the JWT token to null on sign out
     $localStorage.$reset({
       token: null
     });
