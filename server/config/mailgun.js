@@ -5,7 +5,6 @@ The mailgun api requires a key, which was imported from './server_config.js'
 var key = require('./server_config.js');
 var domain = 'sandboxfc8ed1e2db424ce48574ca88fa53eb0e.mailgun.org';
 var mailgun = require('mailgun-js')({ apiKey: key.mg, domain: domain });
-var gif = require('./giphy.js');
 
 
 module.exports = {
