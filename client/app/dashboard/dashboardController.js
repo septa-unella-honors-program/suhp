@@ -41,7 +41,16 @@ angular.module('suhp.dashboard', [])
         console.log("DB goal ID");
         console.log(goalId);
         vm.goal.id=goalId.data;
-        vm.data.goals.push(vm.goal);
+
+        var newGoal={
+          id:goalId.data,
+          description:vm.goal.description,
+          deadline:vm.goal.deadline,
+          hasExpired:false,
+          hasCompleted:false
+        };
+
+        vm.data.goals.push(newGoal);
       })
       .catch(function(err){
         console.log("error posting goal");
