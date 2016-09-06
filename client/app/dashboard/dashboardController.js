@@ -8,7 +8,6 @@ angular.module('suhp.dashboard', ['ngStorage'])
   // var username = User.currentUser;
   var username = User.currentUser;
   vm.data = {};
-  vm.data.goals =[];
   //Initialize array to store goals in memory
   vm.data.goals = [] || null;
   vm.goal = {};
