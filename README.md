@@ -13,3 +13,9 @@ Style Guide
 
 At the beginning of each file, write a 1-2 line comment explaining the purpose of the file in relation to the project.
 Write a multiline comment explaining the purpose of any function / method / variable / service / element that may be confusing or unclear to the reader.
+
+
+Front End 
+---------
+
+Utilizes Angular 1.5, ng-route and Bootstrap. All factories are located in the services.js file. Routing is located in app.js. 
