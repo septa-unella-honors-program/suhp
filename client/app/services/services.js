@@ -1,6 +1,6 @@
 //contains all client-side services for signup, signin, and dashboard
 
-angular.module('suhp.services', [])
+angular.module('suhp.services', ['ngStorage'])
 
 .factory('User', function(){
   var currentUser=null;
@@ -10,7 +10,7 @@ angular.module('suhp.services', [])
 
 })
 
-.factory('Auth', function($http){
+.factory('Auth', function($http, $localStorage){
   //factory to post username to database upon signup
   var signup = function(user){
     console.log('user', user);
@@ -20,8 +20,7 @@ angular.module('suhp.services', [])
       data: user
     })
     .then(function(response){
-      console.log('success', response.query);
-      
+      $localStorage.token = response.data.token;
       return response.data;
     })
     .catch(function(error){
@@ -47,16 +46,16 @@ angular.module('suhp.services', [])
     });
   };
 
-  var userFound = false;
-
   var signin = function(userobj){
-    console.log("+++line 38 services.js user object", userobj);
+    
     return $http({
       method: 'GET',
       url: '/signin',
       params: userobj
     }).then(function(response){
-
+      console.log('response', response);
+      $localStorage.token = response.data.token;
+      $localStorage.user = response.data.user;
       if(response.status == 200){
           return response;
         } 
@@ -65,10 +64,15 @@ angular.module('suhp.services', [])
     });
   };
 
+  var hasToken = function() {
+    return !!$localStorage.token;
+  };
+
   return {
     signup : signup,
     signin: signin,
-    storeFriendEmailList : storeFriendEmailList
+    storeFriendEmailList : storeFriendEmailList,
+    hasToken: hasToken
   }
 
 })
@@ -99,13 +103,6 @@ angular.module('suhp.services', [])
         method: 'POST',
         url: '/goals',
         data: userGoal
-            // should data be {
-            //   "username": username,
-            //   "description": description,
-            //   "deadline": deadline,
-            //   "hasExpired": false,
-            //   "hasCompleted": false
-            // }
       });
   };
 
