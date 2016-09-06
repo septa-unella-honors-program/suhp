@@ -16,6 +16,10 @@ angular.module('suhp.dashboard', [])
     //need to inject user factory
     Dashboard.getUserGoals(username)
     .then(function(goals){
+      goals.forEach(function(goal){
+        //console.log("deadline "+ new Date(goal.deadline) );
+        goal.deadline=((new Date(goal.deadline))+'').slice(0,25);
+      });
       vm.data.goals = goals;
     })
     .catch(function(error){
@@ -41,7 +45,16 @@ angular.module('suhp.dashboard', [])
         console.log("DB goal ID");
         console.log(goalId);
         vm.goal.id=goalId.data;
-        vm.data.goals.push(vm.goal);
+
+        var newGoal={
+          id:goalId.data,
+          description:vm.goal.description,
+          deadline:((new Date(vm.goal.deadline))+'').slice(0,25),
+          hasExpired:false,
+          hasCompleted:false
+        };
+
+        vm.data.goals.push(newGoal);
       })
       .catch(function(err){
         console.log("error posting goal");
